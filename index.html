@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Huella Iberá — Hotel de Esteros · Colonia Carlos Pellegrini, Corrientes</title>
+<meta name="description" content="Huella Iberá, hotel de esteros en Colonia Carlos Pellegrini. Paquetes con alojamiento, comidas y expediciones para vivir los Esteros del Iberá: turismo sustentable, naturaleza virgen y calidez correntina.">
+<meta name="theme-color" content="#283226">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Huella Iberá — Hotel de Esteros">
+<meta property="og:description" content="Paquetes con alojamiento, comidas y expediciones en el corazón de los Esteros del Iberá.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/og/huella-ibera-portada.jpg">
+
+<link rel="icon" href="images/og/favicon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     SPRITE DE ÍCONOS — todo el set de íconos de la web vive acá una sola
+     vez y se referencia con <use href="#icon-x">. No se ve en pantalla.
+     ===================================================================== -->
+<svg class="sr-only" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- huella / rastro de ave — ícono insignia del sitio (de "Huella" Iberá) -->
+    <symbol id="icon-track" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 6c-2 0-3.4 2-3.4 4.6 0 2.3 1.5 4.4 3.4 4.4s3.4-2.1 3.4-4.4C19.4 8 18 6 16 6Z"/>
+      <path d="M16 16c-3.6 4-7.4 5.4-9.6 9.4"/>
+      <path d="M16 16c3.6 4 7.4 5.4 9.6 9.4"/>
+      <path d="M5 24.8c-.6-2 .4-3.6 2-3.8"/>
+      <path d="M27 24.8c.6-2-.4-3.6-2-3.8"/>
+    </symbol>
+
+    <symbol id="icon-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 4C9 4 4 11 4 18c0 .8.6 2 2 2 7 0 14-5 14-16Z"/>
+      <path d="M6 19C10 14 14 10 19 5"/>
+    </symbol>
+
+    <symbol id="icon-boat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 14h18l-2.2 5.2a2 2 0 0 1-1.84 1.2H7.04a2 2 0 0 1-1.84-1.2L3 14Z"/>
+      <path d="M8 14V6.6c0-.4.3-.7.7-.6l7 1.9c.5.1.6.8.1 1L8 14Z"/>
+      <path d="M12 2.4V6"/>
+    </symbol>
+
+    <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 14.5A8.5 8.5 0 1 1 11 3a7 7 0 0 0 9 11.5Z"/>
+      <path d="M18 4.5v3M16.5 6h3"/>
+    </symbol>
+
+    <symbol id="icon-horse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 21c0-3.5.3-6 2-8.4"/>
+      <path d="M7 12.6C5.6 10 6 6.5 9 4.6c2-1.3 4.6-1.2 6 .4 1 .1 2.3.9 2.6 2.2.3 1.2-.2 1.8-1 2.1"/>
+      <path d="M16.6 9.3c1 .6 1.9 1.7 2.1 3.2.3 2.4-.7 4-1.7 5.5-.6.9-.6 1.9-.4 3"/>
+      <path d="M9 13c1.6 1 2.6 2.6 2.6 4.6 0 1.3-.2 2.4-.6 3.4"/>
+      <path d="M13.6 6.3 12.2 7.7"/>
+    </symbol>
+
+    <symbol id="icon-binoculars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="7" cy="16" r="3.2"/>
+      <circle cx="17" cy="16" r="3.2"/>
+      <path d="M9.6 14 8.4 6.6a1.4 1.4 0 0 1 1.4-1.6h.4a1.4 1.4 0 0 1 1.4 1.2l1 7"/>
+      <path d="M14.4 14l1-7.8a1.4 1.4 0 0 1 1.4-1.2h.4a1.4 1.4 0 0 1 1.4 1.6L17.8 13"/>
+      <path d="M11.4 6h1.2"/>
+    </symbol>
+
+    <symbol id="icon-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M14.8 9.2 13 13l-3.8 1.8L11 11l3.8-1.8Z"/>
+    </symbol>
+
+    <symbol id="icon-fire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21c-3.6 0-6-2.2-6-5.6 0-2 1-3.4 2-4.7-.2 1.3.2 2.2 1 2.6-.3-2.6.6-5 3-7 .4 2 1.3 3 2.6 4 1.6 1.2 3.4 2.7 3.4 5.5C18 18.8 15.6 21 12 21Z"/>
+    </symbol>
+
+    <symbol id="icon-pool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 17c1.2 1 2.4 1 3.6 0s2.4-1 3.6 0 2.4 1 3.6 0 2.4-1 3.6 0 2.4 1 3.6 0"/>
+      <path d="M5 13 17 5l3 3-9 7"/>
+      <path d="M9.5 9.5 14 13"/>
+    </symbol>
+
+    <symbol id="icon-utensils" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 3v6.2c0 1-.8 1.8-1.8 1.8S3.4 10.2 3.4 9.2V3"/>
+      <path d="M5.2 11v10"/>
+      <path d="M16.6 3c-1.7 0-3 2-3 5s1.3 5 3 5"/>
+      <path d="M16.6 3v18"/>
+    </symbol>
+
+    <symbol id="icon-seedling" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21v-9"/>
+      <path d="M12 12C7 12 5 9 5 5c4 0 7 2 7 7Z"/>
+      <path d="M12 9c0-3.5 2.4-5.5 6-5.5.3 3.5-1.4 6.2-6 6.2"/>
+    </symbol>
+
+    <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 6.4C10.4 5 8 4.4 4.6 4.6V18c3.4-.2 5.8.4 7.4 1.8 1.6-1.4 4-2 7.4-1.8V4.6C16 4.4 13.6 5 12 6.4Z"/>
+      <path d="M12 6.4V19.8"/>
+    </symbol>
+
+    <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3 4.5 6v6.4C4.5 16.6 7.7 20 12 21.5c4.3-1.5 7.5-4.9 7.5-9.1V6L12 3Z"/>
+      <path d="M9 12l2.2 2.2L15.4 9.6"/>
+    </symbol>
+
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.2-.7.9-.9 1-.2.2-.3.2-.6.1-1.6-.8-2.7-1.5-3.7-3.3-.1-.3 0-.4.1-.6l.5-.7c.1-.2.1-.4 0-.6-.1-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.2-.9 1-.9 2.4 0 1.4 1 2.8 1.2 3 .2.2 2.2 3.4 5.4 4.6 2.6 1 2.6.8 3.1.8.5 0 1.6-.6 1.8-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.4-.3Z"/>
+      <path d="M12 2.5A9.5 9.5 0 0 0 3.7 16.9L2.5 21.5l4.7-1.2A9.5 9.5 0 1 0 12 2.5Zm0 17.3c-1.5 0-3-.4-4.3-1.1l-.3-.2-3 .8.8-2.9-.2-.3a7.8 7.8 0 1 1 6.9 3.7Z"/>
+    </symbol>
+
+    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17" cy="7" r="0.9" fill="currentColor" stroke="none"/>
+    </symbol>
+
+    <symbol id="icon-facebook" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M14.5 21v-7h2.4l.4-3H14.5V8.7c0-.9.3-1.6 1.7-1.6h1.4V4.4c-.3 0-1.4-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3V11H8.5v3H11v7Z"/>
+    </symbol>
+
+    <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5.5" width="18" height="13" rx="2"/>
+      <path d="M4 7l8 6 8-6"/>
+    </symbol>
+
+    <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7.4 3.6 9.8 8 7.6 10c1 2.2 2.2 3.4 4.4 4.4l2-2.2 4.4 2.4v3a1.6 1.6 0 0 1-1.8 1.6C9.9 18.4 5.6 14.1 4.8 7.4 4.6 6.3 5.4 5.4 6.4 5.2Z"/>
+    </symbol>
+
+    <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12Z"/>
+      <circle cx="12" cy="9" r="2.4"/>
+    </symbol>
+
+    <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+      <path d="M5 5l14 14M19 5 5 19"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+      <path d="M3 6h18M3 12h18M3 18h18"/>
+    </symbol>
+
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M13 6l6 6-6 6"/>
+    </symbol>
+
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 12.5 9 17.5 20 6.5"/>
+    </symbol>
+
+    <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+    </symbol>
+
+    <symbol id="icon-boot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9.5 3v8.4L6 14.2c-1 .7-1.6 1.8-1.6 3v1.3c0 .8.6 1.5 1.5 1.5h12.6c.8 0 1.5-.7 1.5-1.5 0-2.8-2-5.2-4.7-5.8L13.5 12V3Z"/>
+      <path d="M9.5 3h4"/>
+    </symbol>
+
+    <symbol id="icon-flashlight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 3h6l1 4-2 2v10.5a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 10 19.5V9L8 7Z"/>
+      <path d="M9.4 11h5.2"/>
+    </symbol>
+
+    <symbol id="icon-bug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="14" rx="4.5" ry="6"/>
+      <path d="M12 8V5M9.5 6.5 8 4.5M14.5 6.5 16 4.5M7.5 12H4M7.5 16H4M20 12h-3.5M20 16h-3.5"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- =====================================================================
+     NAV
+     ===================================================================== -->
+<header class="nav" id="siteNav">
+  <div class="container">
+    <a href="#inicio" class="nav-brand">
+      <svg aria-hidden="true"><use href="#icon-track"/></svg>
+      <span>Huella Iberá<small>Hotel de Esteros</small></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+      <a href="#posada">La posada</a>
+      <a href="#expediciones">Expediciones</a>
+      <a href="#paquetes">Paquetes y tarifas</a>
+      <a href="#findeslargos">Findes largos</a>
+      <a href="#llegar">Cómo llegar</a>
+      <a href="#galeria">Galería</a>
+      <a href="#libros">Libros gratuitos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn--primary btn--sm" id="navWaBtn" href="https://wa.me/5491150204031" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+        <span>Reservar</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <svg aria-hidden="true"><use href="#icon-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- =====================================================================
+     HERO
+     · Imagen recomendada: images/hero/fachada-atardecer.jpg (1920×1280 o más,
+       horizontal, la galería/fachada de la posada con luz dorada — ya tenés
+       una foto muy parecida a esta en el PDF de tarifas)
+     ===================================================================== -->
+<section class="hero" id="inicio">
+  <div class="hero-media">
+    <img src="images/hero/fachada-atardecer.jpg" alt="Fachada de Huella Iberá con techo a dos aguas entre el monte correntino, luz de atardecer">
+  </div>
+  <div class="hero-content container">
+    <p class="hero-eyebrow">Colonia Carlos Pellegrini · Esteros del Iberá · Corrientes</p>
+    <h1 class="hero-title">Donde el agua<em>todavía manda</em></h1>
+    <p class="hero-sub">Un hotel de esteros pensado para perderse en la naturaleza virgen del Iberá: lancha al amanecer, safaris nocturnos, asado a leña y una posada de campo correntino que cuida el lugar tanto como a vos.</p>
+    <div class="hero-actions">
+      <a href="#paquetes" class="btn btn--primary">
+        <svg aria-hidden="true"><use href="#icon-track"/></svg>
+        Ver paquetes y tarifas
+      </a>
+      <a href="#expediciones" class="btn btn--ghost">Conocer las expediciones</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Seguí la huella</span>
+    <div class="huella-walk" aria-hidden="true">
+      <svg viewBox="0 0 260 46"><path d="M6 8 C40 38, 60 8, 96 30 S 150 8, 188 30 S 230 8, 254 26" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    </div>
+  </div>
+</section>
+
+<div class="tape" aria-hidden="true">
+  <div class="tape-track">
+    <span>
+      <svg style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#icon-track"/></svg> Turismo sustentable
+      <svg style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#icon-track"/></svg> Naturaleza virgen del Iberá
+      <svg style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#icon-track"/></svg> Calidez correntina
+      <svg style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#icon-track"/></svg> Conservación y educación ambiental
+    </span>
+    <span>
+      <svg style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#icon-track"/></svg> Turismo sustentable
+      <svg style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#icon-track"/></svg> Naturaleza virgen del Iberá
+      <svg style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#icon-track"/></svg> Calidez correntina
+      <svg style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#icon-track"/></svg> Conservación y educación ambiental
+    </span>
+  </div>
+</div>
+
+<main>
+
+<!-- =====================================================================
+     INTRO / MANIFIESTO
+     · Imagen recomendada: images/posada/jardin-laguna.jpg (vertical 4:5,
+       la laguna o el sendero de palmeras al embarcadero)
+     ===================================================================== -->
+<section class="section" id="manifiesto">
+  <div class="container">
+    <div class="split reveal-group">
+      <figure class="split-media reveal">
+        <img src="images/posada/jardin-laguna.jpg" alt="Sendero entre palmeras hacia la Laguna Iberá, al atardecer">
+        <figcaption>Laguna Iberá — a una cuadra de la posada</figcaption>
+      </figure>
+      <div class="split-text reveal">
+        <p class="eyebrow">Nuestra huella</p>
+        <h2 class="section-title">Un refugio de campo correntino<br><em>frente al estero más vivo de Argentina</em></h2>
+        <p class="lede">Huella Iberá está a una cuadra de la Laguna Iberá y a cuatro del embarcadero, en un pueblo de calles de tierra, casas de barro y gente que vive del monte y del agua. Nueve habitaciones grandes, dos salones con hogar a leña y un jardín de plantas nativas que da la bienvenida después de cada expedición.</p>
+        <p>Cocinamos con verduras de huertas orgánicas locales y carnes de los campos vecinos de Camba Trapo. La repostería, las pastas y los dulces son de elaboración propia, con frutos de estación — la misma cocina de siempre, sin atajos.</p>
+        <div class="signature-block">
+          <img src="images/equipo/andrea-gustavo.jpg" alt="Andrea y Gustavo, anfitriones de Huella Iberá">
+          <p class="who"><strong>Andrea y Gustavo</strong>Anfitriones de Huella Iberá</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     COMPROMISO — 3 pilares (sección oscura)
+     ===================================================================== -->
+<section class="section on-dark" id="compromiso">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow on-dark">Nuestro compromiso</p>
+      <h2 class="section-title">Turismo que deja el estero<br><em>mejor de lo que lo encontró</em></h2>
+      <p class="lede" style="margin-inline:auto;">El proyecto Ecoposada tiene tres patas que sostienen cada estadía: hotelería sostenible, conservación de la naturaleza y educación ambiental para la comunidad.</p>
+    </div>
+
+    <div class="pillars reveal-group">
+      <div class="pillar reveal">
+        <span class="num">01</span>
+        <svg aria-hidden="true"><use href="#icon-leaf"/></svg>
+        <h3>Turismo sustentable</h3>
+        <p>Paquetes completos de alojamiento, comidas y excursiones durante todo el año, pensados para convivir con el estero sin forzarlo.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="num">02</span>
+        <svg aria-hidden="true"><use href="#icon-seedling"/></svg>
+        <h3>Conservación de la naturaleza</h3>
+        <p>Somos hermanos de la Reserva Natural Privada Camba Trapo, junto a la Fundación de Historia Natural Félix de Azara, con un pastizal nativo protegido por el programa Ganadería de Pastizal.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="num">03</span>
+        <svg aria-hidden="true"><use href="#icon-book"/></svg>
+        <h3>Educación ambiental</h3>
+        <p>El Ecotaller Timbó enseña inglés y ambiente a los chicos de la Colonia con juegos y arte. También editamos libros de naturaleza, libres y gratuitos para quien quiera llevarse algo más que fotos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     LA POSADA — habitaciones y servicios
+     · Imágenes recomendadas: images/posada/piscina.jpg, images/posada/
+       habitacion.jpg, images/posada/living-hogar.jpg, images/posada/exterior.jpg
+     ===================================================================== -->
+<section class="section" id="posada">
+  <div class="container">
+    <div class="posada-grid">
+      <div class="posada-photos reveal-group">
+        <figure class="ph reveal"><img src="images/posada/exterior.jpg" alt="Galería y jardín central de Huella Iberá"></figure>
+        <figure class="ph reveal"><img src="images/posada/habitacion.jpg" alt="Habitación de Huella Iberá con vista al jardín"></figure>
+        <figure class="ph reveal"><img src="images/posada/piscina.jpg" alt="Piscina con deck-solarium de Huella Iberá"></figure>
+      </div>
+
+      <div class="split-text">
+        <p class="eyebrow">La posada</p>
+        <h2 class="section-title">Nueve habitaciones,<br><em>un solo ritmo de campo</em></h2>
+        <p class="lede">Construcción de estilo correntino, con galerías amplias y habitaciones de 3 a 6 pasajeros — todas con baño privado, ducha de agua caliente, ventilador de techo y calefacción eléctrica. Disponemos de una habitación adaptada para personas con discapacidad.</p>
+
+        <ul class="feature-list">
+          <li><svg aria-hidden="true"><use href="#icon-pool"/></svg> Piscina con deck-solarium y quincho con hamacas</li>
+          <li><svg aria-hidden="true"><use href="#icon-fire"/></svg> Living y restaurante con hogar a leña y TV satelital</li>
+          <li><svg aria-hidden="true"><use href="#icon-book"/></svg> Biblioteca, juegos de mesa, pool, metegol y ping-pong</li>
+          <li><svg aria-hidden="true"><use href="#icon-utensils"/></svg> Cocina casera, menú apto celíacos y vegetarianos</li>
+        </ul>
+
+        <a href="#paquetes" class="btn btn--ink" style="margin-top:1.8rem;">
+          Ver disponibilidad y tarifas
+          <svg aria-hidden="true"><use href="#icon-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     EXPEDICIONES
+     · Imágenes recomendadas (vertical 4:5): images/expediciones/
+       nocturna.jpg, lancha.jpg, sendero-monos.jpg, cabalgata.jpg,
+       camba-trapo-natural.jpg, camba-trapo-cultural.jpg
+     ===================================================================== -->
+<section class="section on-paper-deep" id="expediciones">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Expediciones</p>
+      <h2 class="section-title">Seis formas de entrar<br><em>al corazón del estero</em></h2>
+      <p class="lede">Cada paquete incluye un combo de estas salidas guiadas. Lancha, kayak, 4x4, a caballo o a pie — el Iberá se recorre distinto según la hora y las ganas.</p>
+    </div>
+
+    <div class="exp-scroller" id="expScroller"></div>
+
+    <div class="exp-nav">
+      <button type="button" id="expPrev" aria-label="Expedición anterior"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#icon-arrow"/></svg></button>
+      <button type="button" id="expNext" aria-label="Expedición siguiente"><svg aria-hidden="true"><use href="#icon-arrow"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     FINDES LARGOS — fechas ya establecidas de fines de semana largos
+     y vacaciones. Se cargan y editan desde el panel de gestión.
+     ===================================================================== -->
+<section class="section on-paper-deep" id="findeslargos">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Reservá con anticipación</p>
+      <h2 class="section-title">Los próximos<br><em>fines de semana largos</em></h2>
+      <p class="lede">Estas fechas ya están confirmadas en el calendario oficial argentino y suelen agotarse rápido. Las promociones y descuentos no aplican durante fines de semana largos ni fechas de vacaciones.</p>
+    </div>
+    <div class="findes-grid reveal-group" id="findesGrid"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PAQUETES Y TARIFAS — sección central del sitio
+     ===================================================================== -->
+<section class="section" id="paquetes">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Paquetes y tarifas</p>
+      <h2 class="section-title">Cuatro huellas para elegir,<br><em>todas con desayuno y cena</em></h2>
+      <p class="lede">Nombramos cada paquete como a los vecinos del estero. Todos incluyen alojamiento, desayuno y cena; el almuerzo es opcional. Los valores son por persona, en pesos argentinos.</p>
+    </div>
+
+    <div class="season-banner reveal" id="seasonBanner">
+      <h3 class="season-name" id="seasonLabel">Primavera</h3>
+      <span>Tarifas para días y fines de semana comunes — consultá fechas de temporada alta</span>
+    </div>
+
+    <!-- Paquete a medida (se muestra solo si viene por link) -->
+    <div id="customPackageContainer" style="display:none;"></div>
+
+    <div class="packages reveal-group" id="packagesGrid"></div>
+
+    <p class="rate-note">Las tarifas no incluyen IVA ni bebidas. Hacemos factura A para agencias y revendedores. <a href="#notas">Ver notas completas del tarifario ↓</a></p>
+
+    <!-- Notas al tarifario -->
+    <div class="accordion" id="notas">
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false"><span>Notas al tarifario</span><span class="plus"></span></button>
+        <div class="accordion-panel">
+          <div class="accordion-panel-inner">
+            <p>Los valores se expresan en pesos argentinos y se abonan en efectivo, transferencia bancaria o tarjeta (cuenta Santander y Mercado Pago). Una vez hecha la reserva se mantiene el valor acordado hasta tomar el servicio, y se admiten cambios de fecha siempre que haya disponibilidad.</p>
+            <p><strong>La seña no es reembolsable</strong>, pero su valor queda a cuenta para una fecha futura.</p>
+            <p>Las tarifas no incluyen IVA — hacemos factura A para agencias de turismo y revendedores. Tampoco incluyen bebidas: las que el huésped traiga y consuma en almuerzos y cenas pagan una tarifa de descorche. Hay un gasto adicional por la entrada al Parque Provincial, que se abona antes de la primera excursión y tiene validez por 5 días.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     CÓMO LLEGAR + QUÉ TRAER
+     ===================================================================== -->
+<section class="section on-paper-deep" id="llegar">
+  <div class="container">
+    <div class="split reveal-group" style="align-items:flex-start;">
+      <div class="split-text reveal">
+        <p class="eyebrow">Consejos útiles</p>
+        <h2 class="section-title">Cómo llegar a la<br><em>Colonia Carlos Pellegrini</em></h2>
+        <p class="lede">Desde cualquier punto del país, el paso obligado es la ciudad de Mercedes (Corrientes). Desde ahí hay 115–120 km hasta la Colonia. Te dejamos las cuatro formas de hacer ese último tramo.</p>
+
+        <div class="accordion" id="llegarAcc">
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false"><span><span class="idx">01</span>Transporte público + colectivo regular</span><span class="plus"></span></button>
+            <div class="accordion-panel"><div class="accordion-panel-inner">
+              <p>Desde Buenos Aires, Flecha Bus, Rápido Tata o Águila Dorada salen de Retiro cerca de las 21 hs hacia Mercedes. Desde Rosario, Paraná o Santa Fe a Goya sale El Nuevo Expreso San José.</p>
+              <p>De Mercedes a la Colonia (120 km), Ibera Bus hace un servicio puerta a puerta tipo Trafic los lunes, miércoles y viernes a las 11:30 hs (llega a las 16 hs), a $2.000 por persona. El regreso sale de la Colonia a las 4 hs, de lunes a jueves. Conviene reconfirmar el viaje un día antes, tanto a la ida como a la vuelta.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false"><span><span class="idx">02</span>Transporte privado (la opción recomendada)</span><span class="plus"></span></button>
+            <div class="accordion-panel"><div class="accordion-panel-inner">
+              <p>El vehículo te espera en la terminal de ómnibus de Mercedes y te lleva directo a la Colonia. Te pasamos los contactos de los transfers de confianza cuando coordinamos tu reserva.</p>
+              <p>Si llegás en auto propio y querés una 4x4 para el tramo final, hay estacionamiento disponible a dos cuadras de la plaza principal.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false"><span><span class="idx">03</span>Transporte aéreo</span><span class="plus"></span></button>
+            <div class="accordion-panel"><div class="accordion-panel-inner">
+              <p>Aerolíneas Argentinas vuela Buenos Aires–Posadas. Desde ahí, transfer privado en camioneta (250 km, hasta 4 personas) hasta Pellegrini. Te ayudamos a coordinarlo.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false"><span><span class="idx">04</span>En auto propio</span><span class="plus"></span></button>
+            <div class="accordion-panel"><div class="accordion-panel-inner">
+              <p>Desde el sur, vía Mercedes: 115 km por la RP40, con 50 km de asfalto y el resto de ripio consolidado. El último tramo es la "ruta panorámica", de tierra, donde abunda la fauna silvestre — se recorre despacio, como parte del paisaje.</p>
+              <p>Desde el norte (Santo Tomé o Virasoro): 140 km por la RP40, de tierra y arena, solo transitable con 4x4 si no llovió. Cargá combustible antes de salir: en Pellegrini no hay surtidor, ni señal de celular en la ruta, ni bancos o cajeros en el pueblo.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="split-text reveal" style="margin-top: 0;">
+        <p class="eyebrow">Qué traer en la valija</p>
+        <h2 class="section-title">Lo justo y<br><em>lo necesario</em></h2>
+        <p class="lede">La Colonia Carlos Pellegrini está dentro de un área natural protegida con guardaparques — el 90% del pueblo vive del turismo, así que vas a sentirte cómodo en todos lados. Con esto alcanza:</p>
+
+        <ul class="valija-grid">
+          <li><svg aria-hidden="true"><use href="#icon-sun"/></svg>Protector solar y gorro</li>
+          <li><svg aria-hidden="true"><use href="#icon-bug"/></svg>Repelente de insectos</li>
+          <li><svg aria-hidden="true"><use href="#icon-boot"/></svg>Botas de goma (temporada de lluvias)</li>
+          <li><svg aria-hidden="true"><use href="#icon-binoculars"/></svg>Prismáticos y cámara de fotos</li>
+          <li><svg aria-hidden="true"><use href="#icon-flashlight"/></svg>Linterna para paseos nocturnos</li>
+          <li><svg aria-hidden="true"><use href="#icon-pool"/></svg>Traje de baño (en verano)</li>
+          <li><svg aria-hidden="true"><use href="#icon-leaf"/></svg>Ropa cómoda, amplia y cerrada</li>
+          <li><svg aria-hidden="true"><use href="#icon-track"/></svg>Calzado cerrado y un doble par de medias</li>
+        </ul>
+        <p class="pkg-note" style="margin-top:1.6rem;border-top:none;padding-top:0;">La pesca deportiva se permite solo con caña y devolución. En caso de lluvia, algunos tramos se embarran — te avisamos con tiempo si pasa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     GALERÍA
+     · Reemplazá cada imagen por las fotos reales. Mantené los nombres de
+       archivo o actualizá los src según corresponda. Sugerido: 8 a 10 fotos
+       cuadradas/rectangulares de buena calidad, formato images/galeria/foto-1.jpg…
+     ===================================================================== -->
+<section class="section" id="galeria">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Galería</p>
+      <h2 class="section-title">Postales del<em> día a día en el estero</em></h2>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <figure class="g-item big"><button type="button" data-full="images/galeria/foto-1.jpg"><img src="images/galeria/foto-1.jpg" alt="Atardecer sobre la Laguna Iberá"></button><span class="cap">Laguna Iberá</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-2.jpg"><img src="images/galeria/foto-2.jpg" alt="Yacaré asomando en el agua"></button><span class="cap">Yacaré</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-3.jpg"><img src="images/galeria/foto-3.jpg" alt="Carpinchos junto al embarcadero"></button><span class="cap">Carpinchos</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-4.jpg"><img src="images/galeria/foto-4.jpg" alt="Mesa servida con cocina casera correntina"></button><span class="cap">Cocina casera</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-5.jpg"><img src="images/galeria/foto-5.jpg" alt="Cabalgata por los palmares"></button><span class="cap">Cabalgata</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-6.jpg"><img src="images/galeria/foto-6.jpg" alt="Habitación de la posada"></button><span class="cap">Habitaciones</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-7.jpg"><img src="images/galeria/foto-7.jpg" alt="Piscina de Huella Iberá"></button><span class="cap">Piscina</span></figure>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     LIBROS GRATUITOS
+     ===================================================================== -->
+<section class="section on-paper-deep" id="libros">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Libros gratuitos</p>
+      <h2 class="section-title">Publicaciones para descargar<br><em>y conocer más sobre la naturaleza</em></h2>
+      <p class="lede">Hacé clic en las tapas para descargar los libros en PDF. Todos son de descarga libre y gratuita.</p>
+    </div>
+    <div class="books-grid reveal-group" id="booksContainer"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     CONTACTO
+     ===================================================================== -->
+<section class="section on-dark" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="eyebrow on-dark">Contacto</p>
+        <h2 class="section-title">Coordinemos<br><em>tu huella en el Iberá</em></h2>
+        <p class="lede">Escribinos por WhatsApp o mail contándonos fechas, cantidad de personas y el paquete que te interesa — te respondemos con disponibilidad y forma de pago.</p>
+
+        <div class="contact-card">
+          <a href="https://wa.me/5491150204031" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp Buenos Aires · +54 9 11 5020-4031</a>
+          <a href="https://wa.me/5493773475154" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp Corrientes · +54 9 3773 475-154</a>
+          <a href="mailto:huellaibera@gmail.com"><svg aria-hidden="true"><use href="#icon-mail"/></svg> huellaibera@gmail.com</a>
+          <a href="#"><svg aria-hidden="true"><use href="#icon-pin"/></svg> Colonia Carlos Pellegrini, Corrientes</a>
+        </div>
+
+        <div class="map-frame">
+          <iframe loading="lazy" title="Mapa de Colonia Carlos Pellegrini, Corrientes" src="https://www.openstreetmap.org/export/embed.html?bbox=-57.21%2C-28.585%2C-57.10%2C-28.505&amp;layer=mapnik&amp;marker=-28.546%2C-57.155"></iframe>
+        </div>
+      </div>
+
+      <form class="reveal" id="contactForm">
+        <p class="eyebrow on-dark">Consulta rápida</p>
+        <h2 class="section-title" style="font-size:1.5rem;margin-bottom:1.4rem;">Te escribimos en el día</h2>
+
+        <div class="contact-form">
+          <div class="row">
+            <div><label for="cf-name">Nombre</label><input id="cf-name" name="nombre" type="text" placeholder="¿Cómo te llamás?" required></div>
+            <div><label for="cf-people">Personas</label><input id="cf-people" name="personas" type="number" min="1" placeholder="2" required></div>
+          </div>
+          <div class="row">
+            <div><label for="cf-pkg">Paquete de interés</label>
+              <select id="cf-pkg" name="paquete"></select>
+            </div>
+            <div><label for="cf-dates">Fechas aproximadas</label><input id="cf-dates" name="fechas" type="text" placeholder="Ej: 10 al 13 de agosto"></div>
+          </div>
+          <div>
+            <label for="cf-msg">Mensaje</label>
+            <textarea id="cf-msg" name="mensaje" placeholder="Contanos lo que necesites saber…"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">
+            <svg aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+            Enviar consulta por WhatsApp
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =====================================================================
+     FOOTER
+     ===================================================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <a href="#inicio" class="footer-brand">
+        <svg aria-hidden="true"><use href="#icon-track"/></svg>
+        Huella Iberá
+      </a>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navegar</h4>
+          <a href="#posada">La posada</a>
+          <a href="#expediciones">Expediciones</a>
+          <a href="#paquetes">Paquetes y tarifas</a>
+          <a href="#galeria">Galería</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/5491150204031" target="_blank" rel="noopener">WhatsApp Buenos Aires</a>
+          <a href="https://wa.me/5493773475154" target="_blank" rel="noopener">WhatsApp Corrientes</a>
+          <a href="mailto:huellaibera@gmail.com">huellaibera@gmail.com</a>
+        </div>
+        <div class="footer-col">
+          <h4>Seguinos</h4>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/huellaibera/" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true"><use href="#icon-instagram"/></svg></a>
+            <a href="https://www.facebook.com/iberahuella" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#icon-facebook"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Huella Iberá · Colonia Carlos Pellegrini, Esteros del Iberá, Corrientes</span>
+      <span>Turismo sustentable · Conservación · Educación ambiental</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5491150204031" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+</a>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen"><svg aria-hidden="true"><use href="#icon-close"/></svg></button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script src="js/cloud-db.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

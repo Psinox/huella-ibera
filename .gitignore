@@ -1,0 +1,16 @@
+# Sistema / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Node / Wrangler (por si corrés algo local dentro de worker/)
+node_modules/
+worker/.wrangler/
+worker/node_modules/
+
+# Datos de cuenta de Cloudflare — nunca subir al repo
+wrangler-account.json
+
+# Variables o secretos locales
+.env
+.env.*

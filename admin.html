@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestión — Huella Iberá</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div class="login-page" id="loginPage">
+  <div class="login-box">
+    <h1>Panel de Gestión</h1>
+    <p>Huella Iberá — Hotel de Esteros</p>
+    <div class="login-error" id="loginError">Usuario o contraseña incorrectos</div>
+    <label for="loginUser">Usuario</label>
+    <input id="loginUser" type="text" placeholder="admin" autocomplete="off">
+    <label for="loginPass">Contraseña</label>
+    <input id="loginPass" type="password" placeholder="••••••">
+    <button class="btn-admin btn-admin--primary btn-admin--block" id="loginBtn">Ingresar</button>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div class="dashboard" id="dashboard">
+
+  <!-- Top bar (mobile) -->
+  <div class="dash-topbar">
+    <h2>Panel de Gestión</h2>
+    <button id="menuToggle" aria-label="Menú">☰</button>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <h2>Huella Iberá<small>Panel de Gestión</small></h2>
+    <ul class="dash-nav">
+      <li class="active" data-tab="paquetes">
+        <span class="dash-nav-icon">📦</span> Paquetes
+      </li>
+      <li data-tab="actividades">
+        <span class="dash-nav-icon">🏕️</span> Actividades
+      </li>
+      <li data-tab="findes">
+        <span class="dash-nav-icon">📅</span> Findes Largos
+      </li>
+      <li data-tab="medida">
+        <span class="dash-nav-icon">✏️</span> Paquete a Medida
+      </li>
+      <li data-tab="temporada">
+        <span class="dash-nav-icon">🌿</span> Temporada
+      </li>
+      <li data-tab="credenciales">
+        <span class="dash-nav-icon">🔐</span> Credenciales
+      </li>
+      <li class="logout" id="logoutBtn">
+        <span class="dash-nav-icon">🚪</span> Cerrar sesión
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main content -->
+  <main class="dash-main" id="dashMain">
+
+    <div id="offlineBanner" class="offline-banner" style="display:none;">
+      ⚠️ Sin conexión con el servidor — estás viendo una copia guardada en este celular. Los cambios no se van a guardar hasta reconectar.
+    </div>
+
+    <!-- TAB: PAQUETES -->
+    <div class="tab-content active" id="tabPaquetes">
+      <h2>Paquetes</h2>
+      <p class="subtitle">Administrá los paquetes turísticos según la temporada.</p>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem;margin-bottom:1rem;">
+        <button class="btn-admin btn-admin--primary" id="addPkgBtn">+ Agregar paquete</button>
+      </div>
+
+      <div id="packagesContainer"></div>
+    </div>
+
+    <!-- TAB: ACTIVIDADES -->
+    <div class="tab-content" id="tabActividades">
+      <h2>Actividades</h2>
+      <p class="subtitle">Activá o desactivá actividades para que se muestren en la página.</p>
+      <button class="btn-admin btn-admin--primary" id="addActBtn" style="margin-bottom:1rem;">+ Agregar actividad</button>
+      <div id="activitiesContainer"></div>
+    </div>
+
+    <!-- TAB: FINDES LARGOS -->
+    <div class="tab-content" id="tabFindes">
+      <h2>Findes Largos</h2>
+      <p class="subtitle">Cargá los fines de semana largos y fechas de vacaciones ya establecidas. Se muestran en la página para que los turistas reserven con anticipación. <strong>Recordá:</strong> los descuentos y promociones no aplican en estas fechas.</p>
+      <button class="btn-admin btn-admin--primary" id="addFlBtn" style="margin-bottom:1rem;">+ Agregar finde largo</button>
+      <div id="findesContainer"></div>
+    </div>
+
+    <!-- TAB: PAQUETE A MEDIDA -->
+    <div class="tab-content" id="tabMedida">
+      <h2>Paquete a Medida</h2>
+      <p class="subtitle">Creá un paquete personalizado para un cliente, generá un link o un PDF.</p>
+
+      <div class="custom-pkg-form" id="customPkgForm">
+        <h3>Datos del paquete personalizado</h3>
+        <div class="form-row">
+          <div class="admin-form-group">
+            <label>Nombre del cliente</label>
+            <input id="cpClient" type="text" placeholder="Ej: Juan Pérez">
+          </div>
+          <div class="admin-form-group">
+            <label>Email / teléfono (opcional)</label>
+            <input id="cpContact" type="text" placeholder="Ej: juan@email.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="admin-form-group">
+            <label>Cantidad de noches</label>
+            <input id="cpNights" type="number" min="1" value="3">
+          </div>
+          <div class="admin-form-group">
+            <label>Nombre del paquete (opcional)</label>
+            <input id="cpName" type="text" placeholder="Ej: Paquete especial Juan">
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Actividades incluidas</label>
+          <div class="checkbox-grid" id="cpActivities"></div>
+        </div>
+
+        <h3 style="margin-top:1rem;">Tarifas (por persona, por noche)</h3>
+        <div class="form-row" style="grid-template-columns:repeat(3,1fr);">
+          <div class="admin-form-group">
+            <label>Single</label>
+            <input id="cpRateSingle" type="number" min="0" placeholder="0">
+          </div>
+          <div class="admin-form-group">
+            <label>Doble</label>
+            <input id="cpRateDoble" type="number" min="0" placeholder="0">
+          </div>
+          <div class="admin-form-group">
+            <label>Triple</label>
+            <input id="cpRateTriple" type="number" min="0" placeholder="0">
+          </div>
+          <div class="admin-form-group">
+            <label>Cuádruple</label>
+            <input id="cpRateCuadruple" type="number" min="0" placeholder="0">
+          </div>
+          <div class="admin-form-group">
+            <label>Quíntuple</label>
+            <input id="cpRateQuintuple" type="number" min="0" placeholder="0">
+          </div>
+          <div class="admin-form-group">
+            <label>Menores 3-8 años</label>
+            <input id="cpRateMenores" type="number" min="0" placeholder="0">
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Nota adicional</label>
+          <textarea id="cpNote" placeholder="Ej: Incluye traslado desde Mercedes..."></textarea>
+        </div>
+
+        <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+          <button class="btn-admin btn-admin--primary" id="generateLinkBtn">🔗 Generar link</button>
+          <button class="btn-admin" id="generatePdfBtn">📄 Generar PDF</button>
+          <button class="btn-admin" id="saveCustomPkgBtn">💾 Guardar historial</button>
+        </div>
+
+        <div style="margin-top:1rem;display:none;" id="linkResult">
+          <label style="font-size:0.75rem;text-transform:uppercase;color:var(--text-soft);">Link para compartir</label>
+          <div class="link-box">
+            <input id="generatedLink" type="text" readonly>
+            <button class="btn-admin btn-admin--sm" id="copyLinkBtn">Copiar</button>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.5rem;">Historial de paquetes a medida</h3>
+      <div id="customHistory"></div>
+    </div>
+
+    <!-- TAB: TEMPORADA -->
+    <div class="tab-content" id="tabTemporada">
+      <h2>Temporada activa</h2>
+      <p class="subtitle">Seleccioná la temporada actual. En la página principal solo se mostrarán los paquetes de esta temporada.</p>
+
+      <div class="settings-card">
+        <h3>Temporada actual</h3>
+        <div class="season-selector" id="seasonSelectorMain">
+          <button class="season-btn" data-season="primavera">🌼 Primavera</button>
+          <button class="season-btn" data-season="verano">☀️ Verano</button>
+          <button class="season-btn" data-season="otono">🍂 Otoño</button>
+          <button class="season-btn" data-season="invierno">❄️ Invierno</button>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-soft);margin-top:1rem;" id="seasonPreview"></p>
+      </div>
+    </div>
+
+    <!-- TAB: CREDENCIALES -->
+    <div class="tab-content" id="tabCredenciales">
+      <h2>Credenciales</h2>
+      <p class="subtitle">Cambiá el usuario y contraseña del panel de gestión.</p>
+
+      <div class="settings-card">
+        <h3>Cambiar credenciales</h3>
+        <div class="admin-form-group">
+          <label>Nuevo usuario</label>
+          <input id="credsUser" type="text">
+        </div>
+        <div class="admin-form-group">
+          <label>Nueva contraseña</label>
+          <input id="credsPass" type="password">
+        </div>
+        <button class="btn-admin btn-admin--primary" id="saveCredsBtn">Guardar cambios</button>
+        <p style="font-size:0.78rem;color:var(--text-soft);margin-top:0.5rem;" id="credsMsg"></p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent">
+    <h3 id="modalTitle">Título</h3>
+    <div id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="btn-admin" id="modalCancel">Cancelar</button>
+      <button class="btn-admin btn-admin--primary" id="modalConfirm">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/cloud-db.js"></script>
+<script src="js/cloudinary-upload.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

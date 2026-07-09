@@ -1,0 +1,10 @@
+name = "huella-ibera-api"
+main = "worker.js"
+compatibility_date = "2026-07-01"
+
+# Después de crear el namespace con:
+#   npx wrangler kv namespace create HUELLA_KV
+# pegá el "id" que te devuelve acá abajo.
+[[kv_namespaces]]
+binding = "HUELLA_KV"
+id = "9e6777c16675479592d8b4af022950bc"
