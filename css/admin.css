@@ -120,6 +120,7 @@ input, select, textarea, button {
   flex: none;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .dash-sidebar h2 {
@@ -678,59 +679,138 @@ input, select, textarea, button {
     inset: 0;
     width: 100%;
     z-index: 100;
+    background: var(--bg-2);
   }
   .dash-sidebar.is-open {
     display: flex;
+    flex-direction: column;
+  }
+  .dash-sidebar h2 {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .dash-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+  }
+  .dash-nav li {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    border-left: none;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+  .dash-nav li.active {
+    border-left: none;
+    border-bottom-color: var(--accent);
+    background: rgba(193,140,59,0.12);
+  }
+  .dash-nav li.logout {
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+    padding-top: 1.2rem;
   }
   .dash-topbar {
     display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 50;
   }
   .dash-main {
-    padding: 1.2rem;
+    padding: 1rem;
     max-height: none;
+    padding-bottom: 2rem;
+  }
+  .dash-main h2 {
+    font-size: 1.2rem;
+  }
+  .dash-main .subtitle {
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
   }
   .form-row {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
   /* Botones y toggles más grandes para dedos, no mouse */
   .btn-admin {
-    padding: 0.75em 1.1em;
-    font-size: 0.88rem;
+    padding: 0.85em 1.2em;
+    font-size: 0.92rem;
+    min-height: 44px;
+    border-radius: 6px;
   }
   .btn-admin--sm {
-    padding: 0.6em 0.9em;
-    font-size: 0.8rem;
+    padding: 0.7em 1em;
+    font-size: 0.85rem;
+    min-height: 40px;
   }
   .toggle {
-    width: 44px;
-    height: 26px;
+    width: 52px;
+    height: 30px;
+    border-radius: 15px;
   }
   .toggle::after {
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
+    top: 2px;
+    left: 2px;
   }
   .toggle.is-on::after {
-    transform: translateX(18px);
+    transform: translateX(22px);
   }
   .dash-nav li {
-    padding: 0.9rem 1.2rem;
-    font-size: 0.95rem;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
   }
 
   /* Tarjetas de actividades/findes: apiladas y con más aire en el celular */
   .activity-item {
     flex-wrap: wrap;
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+  .activity-item .act-img {
+    width: 56px;
+    height: 56px;
+  }
+  .activity-item .act-info h4 {
+    font-size: 0.92rem;
+  }
+  .activity-item .act-info p {
+    font-size: 0.78rem;
   }
   .activity-item .act-actions {
     width: 100%;
     justify-content: flex-end;
     margin-top: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  /* Admin cards */
+  .admin-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .admin-card {
+    padding: 1rem;
+  }
+  .admin-card .card-head {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .admin-card .card-title {
+    font-size: 0.95rem;
+  }
+  .admin-card .card-actions {
+    gap: 0.4rem;
   }
 
   /* Modal a pantalla completa en el celular — más cómodo que un cuadro chico */
   .modal-overlay {
     padding: 0;
+    align-items: stretch;
   }
   .modal {
     max-width: 100%;
@@ -739,7 +819,20 @@ input, select, textarea, button {
     max-height: 100%;
     border-radius: 0;
     padding: 1.2rem;
-    padding-bottom: 6rem;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .modal h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+  }
+  .modal #modalBody {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .modal-actions {
     position: fixed;
@@ -748,16 +841,126 @@ input, select, textarea, button {
     right: 0;
     background: var(--bg-2);
     border-top: 1px solid var(--border);
-    padding: 0.9rem 1.2rem;
+    padding: 0.9rem 1rem;
     margin: 0;
+    display: flex;
+    gap: 0.6rem;
   }
   .modal-actions .btn-admin {
     flex: 1;
     justify-content: center;
+    min-height: 48px;
+    font-size: 0.95rem;
   }
 
+  /* Season buttons */
+  .season-selector {
+    gap: 0.4rem;
+  }
   .season-btn {
-    padding: 0.8em 1.4em;
+    padding: 0.9em 1.5em;
     font-size: 0.95rem;
+    flex: 1;
+    min-width: calc(50% - 0.2rem);
+  }
+
+  /* Login */
+  .login-box {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  .login-box input {
+    padding: 0.8em 1em;
+    font-size: 16px;
+    min-height: 48px;
+  }
+  .login-box .btn-admin {
+    min-height: 52px;
+    font-size: 1rem;
+  }
+
+  /* Forms */
+  .admin-form-group input,
+  .admin-form-group select,
+  .admin-form-group textarea {
+    padding: 0.75em 1em;
+    font-size: 16px;
+    min-height: 48px;
+    border-radius: 6px;
+  }
+  .admin-form-group textarea {
+    min-height: 100px;
+  }
+  .admin-form-group label {
+    font-size: 0.78rem;
+    margin-bottom: 0.4rem;
+  }
+
+  /* Checkbox grid */
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .checkbox-grid label {
+    padding: 0.6rem 0.8rem;
+    background: var(--bg);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Custom package form */
+  .custom-pkg-form {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  .custom-pkg-form h3 {
+    font-size: 0.95rem;
+  }
+
+  /* Link box */
+  .link-box {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .link-box input {
+    font-size: 0.82rem;
+    padding: 0.7em 0.9em;
+  }
+  .link-box .btn-admin {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* History items */
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+  .history-item .hi-actions {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .history-item .hi-actions .btn-admin {
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* Settings */
+  .settings-card {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  /* Offline banner */
+  .offline-banner {
+    font-size: 0.78rem;
+    padding: 0.8em 1em;
+    border-radius: 6px;
   }
 }

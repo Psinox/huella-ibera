@@ -893,6 +893,10 @@
   });
 
   menuToggle.addEventListener('click', function () { dashSidebar.classList.toggle('is-open'); });
+  var closeSidebarBtn = document.getElementById('closeSidebar');
+  if (closeSidebarBtn) {
+    closeSidebarBtn.addEventListener('click', function () { dashSidebar.classList.remove('is-open'); });
+  }
 
   $('addPkgBtn').addEventListener('click', function () { showPkgForm(null); });
   $('addActBtn').addEventListener('click', function () { showActForm(null); });

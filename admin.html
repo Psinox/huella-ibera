@@ -28,12 +28,13 @@
   <!-- Top bar (mobile) -->
   <div class="dash-topbar">
     <h2>Panel de Gestión</h2>
-    <button id="menuToggle" aria-label="Menú">☰</button>
+    <button id="menuToggle" aria-label="Menú" style="min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;">☰</button>
   </div>
 
   <!-- Sidebar -->
   <aside class="dash-sidebar" id="dashSidebar">
     <h2>Huella Iberá<small>Panel de Gestión</small></h2>
+    <button id="closeSidebar" aria-label="Cerrar menú" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text);font-size:1.5rem;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;z-index:10;">✕</button>
     <ul class="dash-nav">
       <li class="active" data-tab="paquetes">
         <span class="dash-nav-icon">📦</span> Paquetes

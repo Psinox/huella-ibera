@@ -47,6 +47,15 @@
         document.body.style.overflow = "";
       });
     });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navLinks.classList.contains("is-open")) {
+        navLinks.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.innerHTML = '<svg aria-hidden="true"><use href="#icon-menu"/></svg>';
+        document.body.style.overflow = "";
+      }
+    });
   }
 
   /* -----------------------------------------------------------------------
