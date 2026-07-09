@@ -9,7 +9,7 @@
         (ej. de nombre: huella_unsigned) → Save
      3. Pegá ese nombre acá abajo en UPLOAD_PRESET.
      ===================================================================== */
-  var CLOUD_NAME = "huella-posada";
+  var CLOUD_NAME = "dmdpzjwom";
   var UPLOAD_PRESET = "huella_unsigned"; // ⚠️ reemplazar por el preset unsigned real
 
   var UPLOAD_URL = "https://api.cloudinary.com/v1_1/" + CLOUD_NAME + "/image/upload";
