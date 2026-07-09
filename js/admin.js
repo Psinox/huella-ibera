@@ -97,8 +97,8 @@
   }
 
   /* ===================================================================
-     TAB NAVIGATION
-     =================================================================== */
+      TAB NAVIGATION
+      =================================================================== */
   var tabs = {
     paquetes: $('tabPaquetes'),
     actividades: $('tabActividades'),
@@ -107,17 +107,23 @@
     temporada: $('tabTemporada'),
     credenciales: $('tabCredenciales')
   };
+  var sidebarTabs = document.querySelectorAll('.dash-nav li[data-tab]');
+  var mobileTabs = document.querySelectorAll('.dash-mtab');
 
   function switchTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(function (t) { t.classList.remove('active'); });
-    document.querySelectorAll('.dash-nav li[data-tab]').forEach(function (li) { li.classList.remove('active'); });
+    sidebarTabs.forEach(function (li) { li.classList.remove('active'); });
+    mobileTabs.forEach(function (btn) { btn.classList.remove('active'); });
     if (tabs[tabId]) tabs[tabId].classList.add('active');
-    document.querySelector('.dash-nav li[data-tab="' + tabId + '"]').classList.add('active');
+    document.querySelector('.dash-nav li[data-tab="' + tabId + '"]')?.classList.add('active');
+    document.querySelector('.dash-mtab[data-tab="' + tabId + '"]')?.classList.add('active');
     if (tabId === 'medida') renderCustomPkgForm();
     if (tabId === 'temporada') renderSeasonSelector();
     if (tabId === 'credenciales') renderCredsForm();
     if (tabId === 'findes') renderFindesLargos();
     if (window.innerWidth <= 768) dashSidebar.classList.remove('is-open');
+    var activeMtab = document.querySelector('.dash-mtab.active');
+    if (activeMtab) activeMtab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 
   /* ===================================================================
@@ -888,11 +894,22 @@
   loginPass.addEventListener('keydown', function (e) { if (e.key === 'Enter') doLogin(); });
   logoutBtn.addEventListener('click', doLogout);
 
-  document.querySelectorAll('.dash-nav li[data-tab]').forEach(function (li) {
+  sidebarTabs.forEach(function (li) {
     li.addEventListener('click', function () { switchTab(li.getAttribute('data-tab')); });
   });
 
-  menuToggle.addEventListener('click', function () { dashSidebar.classList.toggle('is-open'); });
+  mobileTabs.forEach(function (btn) {
+    btn.addEventListener('click', function () { switchTab(btn.getAttribute('data-tab')); });
+  });
+
+  var logoutBtnMobile = $('logoutBtnMobile');
+  if (logoutBtnMobile) {
+    logoutBtnMobile.addEventListener('click', doLogout);
+  }
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function () { dashSidebar.classList.toggle('is-open'); });
+  }
   var closeSidebarBtn = document.getElementById('closeSidebar');
   if (closeSidebarBtn) {
     closeSidebarBtn.addEventListener('click', function () { dashSidebar.classList.remove('is-open'); });

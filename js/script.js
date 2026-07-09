@@ -428,7 +428,7 @@
     var grid = document.getElementById("findesGrid");
     if (!grid) return;
 
-    var list = HD.getUpcomingFindesLargos().slice(0, 6);
+    var list = HD.getUpcomingFindesLargos().slice(0, 3);
     grid.innerHTML = "";
 
     if (list.length === 0) {
@@ -459,9 +459,9 @@
       var html = "";
       if (idx === 0) html += '<span class="finde-flag">Próximo</span>';
       html += '<div class="finde-dates">';
-      html += '  <span class="finde-day">' + start.day + '<em>' + start.month + '</em></span>';
+      html += '  <span class="finde-day"><span class="num">' + start.day + '</span><em>' + start.month + '</em></span>';
       html += '  <span class="finde-sep">→</span>';
-      html += '  <span class="finde-day">' + end.day + '<em>' + end.month + '</em></span>';
+      html += '  <span class="finde-day"><span class="num">' + end.day + '</span><em>' + end.month + '</em></span>';
       html += '</div>';
       html += '<h3 class="finde-label">' + f.label + '</h3>';
       if (soon && daysUntil > 0) html += '<p class="finde-countdown">Faltan ' + daysUntil + ' día' + (daysUntil !== 1 ? "s" : "") + '</p>';

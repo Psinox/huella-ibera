@@ -415,8 +415,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   margin-bottom: 1.4rem;
   max-width: 30ch;
 }
+@media (max-width: 768px){
+  .hero-content{ text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .hero-eyebrow{ text-align:center; }
+  .hero-title{ text-align:center; margin-inline:auto; }
+  .hero-sub{ text-align:center; margin-inline:auto; }
+  .hero-actions{ justify-content:center; }
+}
 @media (max-width: 480px){
-  .hero-eyebrow{ font-size: 0.66rem; letter-spacing: .12em; max-width: 26ch; }
+  .hero-eyebrow{ font-size: 0.66rem; letter-spacing: .12em; max-width: 26ch; margin-inline:auto; }
   .hero-content{ padding: 7rem 0 2.4rem; }
   .hero-title{ font-size: clamp(2.2rem, 10vw, 3.2rem); }
   .hero-sub{ font-size: 0.95rem; margin-top: 1.2rem; }
@@ -598,11 +605,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .pillar p{ color: rgba(241,232,211,.78); font-size: 0.96rem; }
 
 @media (max-width: 860px){
-  .pillars{ grid-template-columns: 1fr; margin-top: 2rem; }
-  .pillar{ border-right:none; border-bottom: 1px solid rgba(241,232,211,.14); padding: 1.8rem 1.5rem; }
-  .pillar:last-child{ border-bottom:none; }
-  .pillar h3{ font-size: 1.15rem; }
-  .pillar p{ font-size: 0.9rem; }
+  .pillars{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+    margin-top: 2rem;
+    border: none;
+    scrollbar-width: none;
+  }
+  .pillars::-webkit-scrollbar{ display:none; }
+  .pillar{
+    flex: 0 0 80vw;
+    scroll-snap-align: center;
+    border: 1px solid rgba(241,232,211,.14);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align:center;
+    background: rgba(241,232,211,.04);
+  }
+  .pillar:last-child{ border: 1px solid rgba(241,232,211,.14); }
+  .pillar .num{ display:block; }
+  .pillar svg{ width:38px; height:38px; margin:0.8rem auto; display:block; }
+  .pillar h3{ font-size: 1.15rem; text-align:center; }
+  .pillar p{ font-size: 0.9rem; text-align:center; }
 }
 
 /* =========================================================================
@@ -691,6 +719,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .exp-nav button:hover{ background: var(--ink); color: var(--paper); }
 .exp-nav svg{ width:18px; height:18px; }
+@media (max-width: 768px){
+  .exp-nav{ display:none; }
+}
 @media (max-width: 480px){
   .exp-scroller{ grid-auto-columns: 85vw; gap: 1rem; margin: 2rem -4px 0; }
   .exp-card-body{ padding: 1rem 1rem 1.2rem; }
@@ -723,56 +754,78 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .findes-grid{
   margin-top: 2.2rem;
   display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 .finde-card{
   position:relative;
   background: var(--paper);
   border: 1px solid var(--paper-line);
-  border-radius: var(--radius);
-  padding: 1.4rem 1.3rem 1.3rem;
+  border-radius: 12px;
+  padding: 1.6rem 1.2rem 1.4rem;
+  text-align:center;
   transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 .finde-card:hover{ transform: translateY(-4px); box-shadow: var(--shadow-card); }
 .finde-card.is-next{ border-color: var(--clay); }
 .finde-flag{
-  position:absolute; top:-12px; left:1.2rem;
+  display:inline-block;
   background: var(--clay); color:var(--paper);
-  font-family: var(--f-mono); font-size:0.6rem; letter-spacing:.08em; text-transform:uppercase;
-  padding: 0.35em 0.8em; border-radius: 999px;
+  font-family: var(--f-mono); font-size:0.55rem; letter-spacing:.08em; text-transform:uppercase;
+  padding: 0.3em 0.8em; border-radius: 999px;
+  margin-bottom:0.8rem;
 }
 .finde-dates{
-  display:flex; align-items:center; gap:0.6rem;
+  display:flex; align-items:center; justify-content:center; gap:0.6rem;
   font-family: var(--f-display); font-weight:600; font-size:1.5rem; color: var(--ink);
-  margin-bottom:0.5rem;
+  margin-bottom:0.3rem;
 }
-.finde-day{ display:flex; flex-direction:column; line-height:1; }
+.finde-day{
+  display:flex; flex-direction:column; align-items:center; line-height:1;
+}
+.finde-day .num{
+  font-size:2.2rem;
+  font-weight:700;
+  line-height:1;
+}
 .finde-day em{
   font-style:normal; font-family: var(--f-mono); font-size:0.62rem; letter-spacing:.06em;
   text-transform:uppercase; color: var(--ink-soft); margin-top:0.3em;
 }
 .finde-sep{ color: var(--clay); font-size:1.1rem; }
-.finde-label{ font-size:1.02rem; font-weight:600; margin-bottom:0.3rem; }
+.finde-label{ font-size:1rem; font-weight:600; margin-bottom:0.3rem; text-align:center; }
 .finde-countdown{
   display:inline-block; font-family: var(--f-mono); font-size:0.7rem; letter-spacing:.04em;
   color: var(--clay); background: rgba(156,74,48,0.09); padding:0.25em 0.6em; border-radius:999px;
-  margin-bottom:0.6rem;
+  margin-bottom:0.5rem;
 }
-.finde-note{ font-size:0.85rem; color: var(--ink-soft); margin-bottom:0.7rem; }
-.finde-cta{ width:100%; justify-content:center; margin-bottom:0.6rem; }
-.finde-disclaimer{ font-size:0.72rem; color: var(--ink-soft); opacity:0.8; }
+.finde-note{ font-size:0.82rem; color: var(--ink-soft); margin-bottom:0.6rem; text-align:center; }
+.finde-cta{ width:100%; justify-content:center; margin-bottom:0.5rem; }
+.finde-disclaimer{ font-size:0.68rem; color: var(--ink-soft); opacity:0.8; text-align:center; }
 
-@media (max-width: 620px){
-  .findes-grid{ grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-  .finde-card{ padding: 1.1rem 1rem 1rem; }
-  .finde-dates{ font-size: 1.2rem; gap: 0.4rem; }
-  .finde-label{ font-size: 0.9rem; }
-  .finde-cta{ padding: 0.8em 1em; font-size: 0.78rem; }
+@media (max-width: 768px){
+  .findes-grid{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+    scrollbar-width: none;
+  }
+  .findes-grid::-webkit-scrollbar{ display:none; }
+  .finde-card{
+    flex: 0 0 75vw;
+    scroll-snap-align: center;
+  }
+  .finde-day .num{ font-size:2rem; }
 }
 @media (max-width: 420px){
-  .findes-grid{ grid-template-columns: 1fr; }
-  .finde-card{ padding: 1.3rem 1.2rem 1.2rem; }
+  .finde-card{ padding: 1.3rem 1rem 1.2rem; }
+  .finde-day .num{ font-size:1.8rem; }
 }
 
 .packages{
@@ -835,10 +888,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .pkg-foot{ padding: 0 1.4rem 1.5rem; }
 
 @media (max-width: 1080px){ .packages{ grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 620px){
-  .packages{ grid-template-columns: 1fr; gap: 1.4rem; }
-  .pkg-card{ border-radius: 8px; overflow: hidden; }
-  .pkg-head{ padding: 1.4rem 1.2rem 1.1rem; }
+@media (max-width: 768px){
+  .packages{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.2rem;
+    padding: 1rem 0.5rem;
+    scrollbar-width: none;
+  }
+  .packages::-webkit-scrollbar{ display:none; }
+  .pkg-card{
+    flex: 0 0 80vw;
+    scroll-snap-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .pkg-head{ padding: 1.4rem 1.2rem 1.1rem; text-align:center; }
   .pkg-body{ padding: 1rem 1.2rem; }
   .pkg-foot{ padding: 0 1.2rem 1.2rem; }
   .pkg-foot .btn{ padding: 1em 1.2em; font-size: 0.82rem; }
@@ -1207,12 +1274,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: var(--clay); color: var(--paper);
   display:flex; align-items:center; justify-content:center;
   box-shadow: 0 6px 20px rgba(124,58,29,.5);
-  transition: transform .3s var(--ease);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
-.wa-float:hover{ transform: scale(1.08); }
+.wa-float:hover{ transform: scale(1.08); box-shadow: 0 8px 30px rgba(124,58,29,.7); }
 .wa-float svg{ width:28px; height:28px; }
-@media (max-width: 480px){
-  .wa-float{ right: 1rem; bottom: 1rem; width: 64px; height: 64px; }
+@media (max-width: 768px){
+  .wa-float{ right: 1rem; bottom: 1.2rem; width: 64px; height: 64px; box-shadow: 0 6px 24px rgba(124,58,29,.55); }
   .wa-float svg{ width: 30px; height: 30px; }
 }
 

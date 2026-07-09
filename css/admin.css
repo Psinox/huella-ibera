@@ -654,7 +654,7 @@ input, select, textarea, button {
   display: none;
   background: var(--bg-2);
   border-bottom: 1px solid var(--border);
-  padding: 0.8rem 1.2rem;
+  padding: 0.7rem 1rem;
   align-items: center;
   justify-content: space-between;
 }
@@ -672,50 +672,56 @@ input, select, textarea, button {
   cursor: pointer;
 }
 
+/* ---- MOBILE TAB BAR ---- */
+.dash-mobile-tabs {
+  display: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.5rem;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.dash-mobile-tabs::-webkit-scrollbar { display: none; }
+
+.dash-mtab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.6em 1em;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-soft);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  flex: none;
+  min-height: 38px;
+}
+.dash-mtab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1a1f1a;
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
-  .dash-sidebar {
-    display: none;
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    z-index: 100;
-    background: var(--bg-2);
-  }
-  .dash-sidebar.is-open {
-    display: flex;
-    flex-direction: column;
-  }
-  .dash-sidebar h2 {
-    padding: 1.2rem;
-    font-size: 1.1rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .dash-nav {
-    flex: 1;
-    overflow-y: auto;
-    padding: 0.5rem 0;
-  }
-  .dash-nav li {
-    padding: 1rem 1.2rem;
-    font-size: 1rem;
-    border-left: none;
-    border-bottom: 1px solid rgba(255,255,255,.04);
-  }
-  .dash-nav li.active {
-    border-left: none;
-    border-bottom-color: var(--accent);
-    background: rgba(193,140,59,0.12);
-  }
-  .dash-nav li.logout {
-    border-top: 1px solid var(--border);
-    margin-top: auto;
-    padding-top: 1.2rem;
-  }
+  .dash-sidebar { display: none !important; }
   .dash-topbar {
     display: flex;
     position: sticky;
     top: 0;
     z-index: 50;
+  }
+  .dash-mobile-tabs {
+    display: flex;
+    position: sticky;
+    top: 49px;
+    z-index: 49;
   }
   .dash-main {
     padding: 1rem;
