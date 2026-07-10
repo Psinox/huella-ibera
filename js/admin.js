@@ -157,7 +157,7 @@
   /* ===================================================================
      IMAGEN — botón reutilizable de subida a Cloudinary
      =================================================================== */
-  function wireImageUploadButton(btnId, fileId, urlInputId, previewId) {
+  function wireImageUploadButton(btnId, fileId, urlInputId, previewId, refId) {
     var btn = $(btnId), file = $(fileId), urlInput = $(urlInputId), preview = $(previewId);
     if (!btn || !file) return;
     btn.addEventListener('click', function () { file.click(); });
@@ -166,6 +166,8 @@
       if (!f || !CLD) return;
       btn.disabled = true;
       var origText = btn.textContent;
+      var refEl = refId ? $(refId) : null;
+      if (refEl) refEl.innerHTML = '';
       btn.textContent = 'Subiendo... 0%';
       CLD.uploadImage(f, function (pct) { btn.textContent = 'Subiendo... ' + pct + '%'; })
         .then(function (url) {
@@ -173,6 +175,7 @@
           if (preview) { preview.src = url; preview.style.display = 'block'; }
           btn.disabled = false;
           btn.textContent = origText;
+          if (refEl) refEl.innerHTML = '<span style="font-size:0.75rem;color:var(--accent);">✓ ' + f.name + ' subido</span>';
         })
         .catch(function (err) {
           btn.disabled = false;
@@ -381,7 +384,7 @@
       html += '<div class="activity-item">';
       html += '  <img class="act-img" src="' + (a.image || '') + '" alt="" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22><rect fill=%22%233d473b%22 width=%2260%22 height=%2260%22/></svg>\'">';
       html += '  <div class="act-info">';
-      html += '    <div class="act-tag">' + (a.tag || '') + '</div>';
+      html += '    <div class="act-tag">' + ((a.tagIcon || '').indexOf('icon-') === 0 ? '' : '<img src="' + (a.tagIcon || '') + '" alt="" style="width:12px;height:12px;display:inline;vertical-align:-2px;border-radius:2px;margin-right:3px;">') + (a.tag || '') + '</div>';
       html += '    <h4>' + a.title + '</h4>';
       html += '    <p>' + (a.description || '').substring(0, 100) + (a.description && a.description.length > 100 ? '...' : '') + '</p>';
       html += '  </div>';
@@ -439,9 +442,22 @@
     html += '<input id="fActTag" type="text" value="' + (s.tag || '') + '" placeholder="Ej: Noche">';
     html += '</div>';
     html += '<div class="admin-form-group">';
-    html += '<label>Ícono</label>';
+    html += '<label>Ícono SVG</label>';
     html += '<select id="fActIcon">' + iconOpts + '</select>';
     html += '</div>';
+    html += '</div>';
+
+    var isCustomIcon = s.tagIcon && s.tagIcon.indexOf('icon-') !== 0;
+    html += '<div class="admin-form-group">';
+    html += '<label>O subí un ícono personalizado</label>';
+    html += '  <img id="fActIconPreview" src="' + (isCustomIcon ? s.tagIcon : '') + '" style="width:48px;height:48px;object-fit:contain;border-radius:4px;margin-bottom:0.5rem;background:rgba(255,255,255,.05);padding:4px;' + (isCustomIcon ? '' : 'display:none;') + '" onerror="this.style.display=\'none\'">';
+    html += '  <div style="display:flex;gap:0.5rem;">';
+    html += '    <input id="fActIconUrl" type="text" value="' + (isCustomIcon ? s.tagIcon : '') + '" placeholder="URL del ícono (Cloudinary)" style="flex:1;">';
+    html += '    <button type="button" class="btn-admin btn-admin--sm" id="fActIconUploadBtn">📷 Subir</button>';
+    html += '    <input type="file" id="fActIconFile" accept="image/*" style="display:none;">';
+    html += '  </div>';
+    html += '  <div id="fActIconRef"></div>';
+    html += '  <small style="display:block;font-size:0.7rem;color:var(--text-soft);margin-top:0.3rem;">Dejá vacío si usás el ícono SVG de arriba.</small>';
     html += '</div>';
 
     html += '<div class="admin-form-group">';
@@ -457,13 +473,14 @@
     html += '    <button type="button" class="btn-admin btn-admin--sm" id="fActImageUploadBtn">📷 Subir</button>';
     html += '    <input type="file" id="fActImageFile" accept="image/*" style="display:none;">';
     html += '  </div>';
+    html += '  <div id="fActImgRef"></div>';
     html += '</div>';
 
     openModal(isEdit ? 'Editar actividad' : 'Nueva actividad', html, function () {
       var title = $('fActTitle').value.trim();
       if (!title) { alert('El título es obligatorio'); return; }
       var tag = $('fActTag').value.trim();
-      var tagIcon = $('fActIcon').value;
+      var tagIcon = ($('fActIconUrl').value.trim() || $('fActIcon').value);
       var desc = $('fActDesc').value.trim();
       var image = $('fActImage').value.trim();
 
@@ -487,7 +504,8 @@
       }).catch(function () {});
     });
 
-    wireImageUploadButton('fActImageUploadBtn', 'fActImageFile', 'fActImage', 'fActImgPreview');
+    wireImageUploadButton('fActImageUploadBtn', 'fActImageFile', 'fActImage', 'fActImgPreview', 'fActImgRef');
+    wireImageUploadButton('fActIconUploadBtn', 'fActIconFile', 'fActIconUrl', 'fActIconPreview', 'fActIconRef');
   }
 
   function editActivity(id) {

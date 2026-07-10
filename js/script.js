@@ -368,7 +368,7 @@
       card.className = "exp-card";
       card.innerHTML = '<figure class="ph"><img src="' + (a.image || "") + '" alt="' + (a.title || "") + '" onerror="this.parentElement.style.display=\'none\'"></figure>' +
         '<div class="exp-card-body">' +
-        '  <span class="tag"><svg aria-hidden="true" style="width:12px;height:12px;display:inline;vertical-align:-1px;"><use href="#' + (a.tagIcon || "icon-binoculars") + '"/></svg> ' + (a.tag || "") + '</span>' +
+        '  <span class="tag">' + ((a.tagIcon || "").indexOf("icon-") === 0 ? '<svg aria-hidden="true" style="width:12px;height:12px;display:inline;vertical-align:-1px;"><use href="#' + a.tagIcon + '"/></svg>' : '<img src="' + (a.tagIcon || "") + '" alt="" style="width:14px;height:14px;display:inline;vertical-align:-2px;border-radius:2px;">') + ' ' + (a.tag || "") + '</span>' +
         '  <h3>' + a.title + '</h3>' +
         '  <p>' + (a.description || "") + '</p>' +
         '</div>';
