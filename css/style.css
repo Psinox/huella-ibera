@@ -502,7 +502,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    SECCIONES — espaciado base
    ========================================================================= */
 .section{ padding: clamp(3.5rem, 8vw, 7.5rem) 0; position:relative; }
-.section.on-dark{ background: linear-gradient(180deg, var(--clay) 0%, #000000 100%); color: var(--paper); }
+.section.on-dark{ background: linear-gradient(180deg, rgba(37,28,21,.88) 0%, rgba(0,0,0,.94) 100%), url('../images/tapiz-400.svg') repeat; color: var(--paper); }
+@media (max-width: 480px){
+  .section.on-dark{ background: linear-gradient(180deg, rgba(37,28,21,.88) 0%, rgba(0,0,0,.94) 100%), url('../images/tapiz-200.svg') repeat; }
+}
 .section.on-paper-deep{ background: var(--paper-deep); }
 .section-head{ max-width: 46em; }
 .section-head.center{ margin-inline:auto; text-align:center; }
