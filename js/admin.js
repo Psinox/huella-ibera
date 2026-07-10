@@ -673,7 +673,12 @@
     var data = getCustomPkgData();
     if (data.activities.length === 0) { alert('Seleccioná al menos una actividad'); return; }
     var encoded = encodeURIComponent(JSON.stringify(data));
-    var link = window.location.origin + window.location.pathname.replace('admin.html', 'paquete.html') + '?custom=' + encoded;
+    // Tomamos la carpeta donde vive la página actual (sin depender de que el
+    // nombre de archivo sea literalmente "admin.html" — funciona igual si se
+    // entra como /admin, /admin.html o /admin/).
+    var path = window.location.pathname;
+    var basePath = path.substring(0, path.lastIndexOf('/') + 1);
+    var link = window.location.origin + basePath + 'paquete.html' + '?custom=' + encoded;
     $('generatedLink').value = link;
     $('linkResult').style.display = 'block';
   }

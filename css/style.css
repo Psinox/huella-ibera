@@ -502,9 +502,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    SECCIONES — espaciado base
    ========================================================================= */
 .section{ padding: clamp(3.5rem, 8vw, 7.5rem) 0; position:relative; }
-.section.on-dark{ background: linear-gradient(180deg, rgba(37,28,21,.88) 0%, rgba(0,0,0,.94) 100%), url('../images/tapiz-400.svg') repeat; color: var(--paper); }
+.section.on-dark{
+  background:
+    linear-gradient(180deg, rgba(37,28,21,.88) 0%, rgba(0,0,0,.94) 100%),
+    url('../images/tapiz-400.svg') repeat;
+  background-size: auto, 400px 400px;
+  color: var(--paper);
+}
 @media (max-width: 480px){
-  .section.on-dark{ background: linear-gradient(180deg, rgba(37,28,21,.88) 0%, rgba(0,0,0,.94) 100%), url('../images/tapiz-200.svg') repeat; }
+  .section.on-dark{
+    background:
+      linear-gradient(180deg, rgba(37,28,21,.88) 0%, rgba(0,0,0,.94) 100%),
+      url('../images/tapiz-200.svg') repeat;
+    background-size: auto, 200px 200px;
+  }
 }
 .section.on-paper-deep{ background: var(--paper-deep); }
 .section-head{ max-width: 46em; }
@@ -1033,6 +1044,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   }
   .gallery-grid .g-item img{ border-radius: 8px; }
   .gallery-grid .g-item .cap{ opacity: 1; font-size: 0.68rem; }
+}
+
+/* =========================================================================
+   INSTAGRAM
+   ========================================================================= */
+.ig-embed{
+  max-width: 900px;
+  margin: 2.4rem auto 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+.ig-embed iframe{ display:block; width:100%; min-height: 420px; }
+.ig-cta{ text-align:center; margin-top: 2rem; }
+.ig-cta .btn svg{ width:18px; height:18px; }
+@media (max-width: 480px){
+  .ig-embed{ margin-top: 1.8rem; }
+  .ig-embed iframe{ min-height: 520px; }
 }
 
 .lightbox{
