@@ -1176,6 +1176,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .footer-brand{ display:flex; align-items:center; gap:0.7rem; color: var(--paper); font-family: var(--f-display); font-size:1.2rem; font-weight:600; }
 .footer-brand svg{ width:26px; height:26px; color: var(--gold-light); }
+.footer-10anos{ height: 60px; width: auto; display:block; }
 .footer-cols{ display:flex; gap: clamp(1.6rem, 4vw, 4rem); flex-wrap:wrap; }
 .footer-col h4{ font-family: var(--f-mono); font-size:0.66rem; letter-spacing:.1em; text-transform:uppercase; color: var(--gold-light); margin-bottom:0.9rem; }
 .footer-col a, .footer-col p{ display:block; margin-bottom:0.5rem; color: rgba(255,255,231,.68); }
