@@ -30,6 +30,8 @@ const DEFAULT_DATA = {
   activities: [],
   findesLargos: [],
   season: "primavera",
+  hero: {},
+  gallery: [],
   _v: 0
 };
 
@@ -128,6 +130,8 @@ export default {
           activities: body.activities || current.activities,
           findesLargos: body.findesLargos || current.findesLargos,
           season: body.season || current.season,
+          hero: body.hero || current.hero,
+          gallery: body.gallery || current.gallery,
           _v: (current._v || 0) + 1
         };
         await putJSON(env, "data", next);
