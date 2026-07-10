@@ -22,15 +22,15 @@
   var DEFAULT_DATA = { packages: [], activities: [], findesLargos: [], season: "primavera", _v: 0 };
 
   var DEFAULT_BOOKS = [
-    { id: 'inteligencia-animales', title: 'Inteligencia y Cultura de los Animales', author: 'Roberto Ares', subtitle: 'Modelo de Capas aplicado a la inteligencia de todos los organismos', cover: 'images/libros/inteligencia-animales.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_5962766f24dd43439b95520def143c7e.pdf', featured: true },
-    { id: 'conducta-plantas', title: 'La Conducta de las Plantas', author: 'Roberto Ares', subtitle: 'Avances del siglo XXI sobre el comportamiento vegetal', cover: 'images/libros/conducta-plantas.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_3977cffb0a444d9e9ed6a8a463c15e8c.pdf', featured: true },
-    { id: 'aves-vida-conducta', title: 'Aves, Vida y Conducta', author: 'Roberto Ares', subtitle: 'Segunda edición actualizada y ampliada', cover: 'images/libros/aves-vida-conducta.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_4c23bfc2292242e08004db65b99d4514.pdf' },
-    { id: 'vida-evolucion', title: 'Vida en Evolución', author: 'Roberto Ares', subtitle: 'Actualización de conocimientos en secuencia didáctica', cover: 'images/libros/vida-evolucion.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_10d45ef52bf44ceba2b930f0f0a093ed.pdf' },
-    { id: 'unico-planeta', title: 'Un Único Planeta', author: 'Roberto Ares', subtitle: 'Visión científica interdisciplinaria de los problemas del planeta', cover: 'images/libros/unico-planeta.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_d22d7e40f8a64181943d5850838c373e.pdf' },
-    { id: 'birds-pampa', title: 'Birds of the Pampa', author: 'Roberto Ares', subtitle: 'Understanding the behavior and biology of birds', cover: 'images/libros/birds-pampa.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_0b7fda795264426492043575ace1f743.pdf' },
-    { id: 'revista-ecoposada-1', title: 'Revista Ecoposada N°1', author: 'Roberto Ares', subtitle: 'Reserva Natural Privada en el estero de Cambá Trapo', cover: 'images/libros/revista-ecoposada-1.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_2dde31fb6737447d8a4c066df5a69b58.pdf' },
-    { id: 'revista-ecoposada-2', title: 'Revista Ecoposada N°2', author: 'Roberto Ares', subtitle: 'Reserva Natural Privada en el estero de Cambá Trapo', cover: 'images/libros/revista-ecoposada-2.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_f8a32b98088c4f15a8dcf2228824bd60.pdf' },
-    { id: 'camba-trapo', title: 'Novedades sobre la Reserva Natural Privada Cambá Trapo', author: '', subtitle: '', cover: 'images/libros/camba-trapo.jpg', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_6c4ce5e6dc2143e09d4afc7e5b2b10ed.pdf' }
+    { id: 'inteligencia-animales', title: 'Inteligencia y Cultura de los Animales', author: 'Roberto Ares', subtitle: 'Modelo de Capas aplicado a la inteligencia de todos los organismos', cover: 'https://static.wixstatic.com/media/5c1156_ecd3bc21f7194817af7f840462d43903~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_5962766f24dd43439b95520def143c7e.pdf', featured: true },
+    { id: 'conducta-plantas', title: 'La Conducta de las Plantas', author: 'Roberto Ares', subtitle: 'Avances del siglo XXI sobre el comportamiento vegetal', cover: 'https://static.wixstatic.com/media/5c1156_972f847dfc36421682ebe360cf62c463~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_3977cffb0a444d9e9ed6a8a463c15e8c.pdf', featured: true },
+    { id: 'aves-vida-conducta', title: 'Aves, Vida y Conducta', author: 'Roberto Ares', subtitle: 'Segunda edición actualizada y ampliada', cover: 'https://static.wixstatic.com/media/5c1156_99fa7b6678214e598abd80c6fa7e1b9a~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_4c23bfc2292242e08004db65b99d4514.pdf' },
+    { id: 'vida-evolucion', title: 'Vida en Evolución', author: 'Roberto Ares', subtitle: 'Actualización de conocimientos en secuencia didáctica', cover: 'https://static.wixstatic.com/media/5c1156_8dcd5b259497438283be09f706654513~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_10d45ef52bf44ceba2b930f0f0a093ed.pdf' },
+    { id: 'unico-planeta', title: 'Un Único Planeta', author: 'Roberto Ares', subtitle: 'Visión científica interdisciplinaria de los problemas del planeta', cover: 'https://static.wixstatic.com/media/5c1156_43b3daa3f6b847a99d6c7b0698d6255e~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_d22d7e40f8a64181943d5850838c373e.pdf' },
+    { id: 'birds-pampa', title: 'Birds of the Pampa', author: 'Roberto Ares', subtitle: 'Understanding the behavior and biology of birds', cover: 'https://static.wixstatic.com/media/5c1156_814bc12f21264ef7ac668e4472de5035~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_0b7fda795264426492043575ace1f743.pdf' },
+    { id: 'revista-ecoposada-1', title: 'Revista Ecoposada N°1', author: 'Roberto Ares', subtitle: 'Reserva Natural Privada en el estero de Cambá Trapo', cover: 'https://static.wixstatic.com/media/5c1156_7006c231e3de41569389e9a9ca551f13~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_2dde31fb6737447d8a4c066df5a69b58.pdf' },
+    { id: 'revista-ecoposada-2', title: 'Revista Ecoposada N°2', author: 'Roberto Ares', subtitle: 'Reserva Natural Privada en el estero de Cambá Trapo', cover: 'https://static.wixstatic.com/media/5c1156_3d10437e27634ce8879354499c6e6bac~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_f8a32b98088c4f15a8dcf2228824bd60.pdf' },
+    { id: 'camba-trapo', title: 'Novedades sobre la Reserva Natural Privada Cambá Trapo', author: '', subtitle: '', cover: 'https://static.wixstatic.com/media/5c1156_01fab1fd7767497fac7728af0f2027f2~mv2.png', pdf: 'https://www.huellaibera.com.ar/_files/ugd/5c1156_6c4ce5e6dc2143e09d4afc7e5b2b10ed.pdf' }
   ];
 
   var DEFAULT_ACTIVITIES = [
@@ -72,6 +72,37 @@
       rates: { single: 1200000, doble: 940000, triple: 890000, cuadruple: 790000, quintuple: 550000, menores: 400000 },
       mealNote: 'Almuerzos opcionales: $19.000 por persona, por comida.' }
   ];
+
+  /* Galería — fotos del carrusel infinito de la home (se puede editar todo desde el panel) */
+  var DEFAULT_GALLERY = [
+    { id: 'gal-1', url: 'images/galeria/foto-1.jpg', caption: 'Laguna Iberá', alt: 'Atardecer sobre la Laguna Iberá', active: true },
+    { id: 'gal-2', url: 'images/galeria/foto-2.jpg', caption: 'Yacaré', alt: 'Yacaré asomando en el agua', active: true },
+    { id: 'gal-3', url: 'images/galeria/foto-3.jpg', caption: 'Carpinchos', alt: 'Carpinchos junto al embarcadero', active: true },
+    { id: 'gal-4', url: 'images/galeria/foto-4.jpg', caption: 'Cocina casera', alt: 'Mesa servida con cocina casera correntina', active: true },
+    { id: 'gal-5', url: 'images/galeria/foto-5.jpg', caption: 'Cabalgata', alt: 'Cabalgata por los palmares', active: true },
+    { id: 'gal-6', url: 'images/galeria/foto-6.jpg', caption: 'Habitaciones', alt: 'Habitación de la posada', active: true },
+    { id: 'gal-7', url: 'images/galeria/foto-7.jpg', caption: 'Piscina', alt: 'Piscina de Huella Iberá', active: true }
+  ];
+
+  /* Hero — banner principal de la home (se puede editar todo desde el panel) */
+  var DEFAULT_HERO = {
+    mediaType: 'image',          // 'image' | 'video'
+    mediaUrl: 'images/hero/fachada-atardecer.jpg',
+    mediaAlt: 'Fachada de Huella Iberá con techo a dos aguas entre el monte correntino, luz de atardecer',
+    showText: true,
+    eyebrow: 'Colonia Carlos Pellegrini · Esteros del Iberá · Corrientes',
+    title: 'Donde el agua',
+    titleEm: 'todavía manda',
+    subtitle: 'Un hotel de esteros pensado para perderse en la naturaleza virgen del Iberá: lancha al amanecer, safaris nocturnos, asado a leña y una posada de campo correntino que cuida el lugar tanto como a vos.',
+    showButtons: true,
+    btnPrimaryLabel: 'Ver paquetes y tarifas',
+    btnPrimaryLink: '#paquetes',
+    btnSecondaryLabel: 'Conocer las expediciones',
+    btnSecondaryLink: '#expediciones',
+    posV: 'bottom',              // 'top' | 'center' | 'bottom'
+    posH: 'left',                // 'left' | 'center' | 'right'
+    overlay: 55                  // 0-100, oscurecido del fondo para legibilidad
+  };
 
   /* Findes largos 2026 — según flyer oficial (se puede editar todo desde el panel) */
   var DEFAULT_FINDES_LARGOS = [
@@ -138,6 +169,8 @@
       packages: DEFAULT_PACKAGES,
       activities: DEFAULT_ACTIVITIES,
       findesLargos: DEFAULT_FINDES_LARGOS,
+      gallery: DEFAULT_GALLERY,
+      hero: DEFAULT_HERO,
       season: "primavera",
       _v: 0
     };
@@ -176,6 +209,9 @@
   function getFindesLargos() { return (cache && cache.findesLargos) || []; }
   function getCurrentSeason() { return (cache && cache.season) || "primavera"; }
   function getBooks() { return DEFAULT_BOOKS; }
+  /* .gallery / .hero pueden faltar si la caché es de antes de esta función — devolvemos default */
+  function getGallery() { return (cache && cache.gallery) || DEFAULT_GALLERY; }
+  function getHero() { return Object.assign({}, DEFAULT_HERO, (cache && cache.hero) || {}); }
 
   /* =====================================================================
      ESCRITURA (async — requieren estar logueado en el panel)
@@ -207,6 +243,8 @@
   function saveActivities(acts) { return pushData({ activities: acts }); }
   function saveFindesLargos(list) { return pushData({ findesLargos: list }); }
   function setCurrentSeason(s) { return pushData({ season: s }); }
+  function saveGallery(list) { return pushData({ gallery: list }); }
+  function saveHero(heroObj) { return pushData({ hero: heroObj }); }
 
   /* =====================================================================
      LOGIN / SESIÓN DEL PANEL
@@ -295,6 +333,8 @@
     DEFAULT_BOOKS: DEFAULT_BOOKS,
     DEFAULT_ACTIVITIES: DEFAULT_ACTIVITIES,
     DEFAULT_FINDES_LARGOS: DEFAULT_FINDES_LARGOS,
+    DEFAULT_GALLERY: DEFAULT_GALLERY,
+    DEFAULT_HERO: DEFAULT_HERO,
 
     getPackages: getPackages,
     savePackages: savePackages,
@@ -305,6 +345,10 @@
     getUpcomingFindesLargos: getUpcomingFindesLargos,
     isLongWeekendDate: isLongWeekendDate,
     getBooks: getBooks,
+    getGallery: getGallery,
+    saveGallery: saveGallery,
+    getHero: getHero,
+    saveHero: saveHero,
     getCurrentSeason: getCurrentSeason,
     setCurrentSeason: setCurrentSeason,
 

@@ -195,15 +195,15 @@
        horizontal, la galería/fachada de la posada con luz dorada — ya tenés
        una foto muy parecida a esta en el PDF de tarifas)
      ===================================================================== -->
-<section class="hero" id="inicio">
-  <div class="hero-media">
+<section class="hero hero--v-bottom hero--h-left" id="inicio">
+  <div class="hero-media" id="heroMedia">
     <img src="images/hero/fachada-atardecer.jpg" alt="Fachada de Huella Iberá con techo a dos aguas entre el monte correntino, luz de atardecer">
   </div>
-  <div class="hero-content container">
-    <p class="hero-eyebrow">Colonia Carlos Pellegrini · Esteros del Iberá · Corrientes</p>
-    <h1 class="hero-title">Donde el agua <em>todavía manda</em></h1>
-    <p class="hero-sub">Un hotel de esteros pensado para perderse en la naturaleza virgen del Iberá: lancha al amanecer, safaris nocturnos, asado a leña y una posada de campo correntino que cuida el lugar tanto como a vos.</p>
-    <div class="hero-actions">
+  <div class="hero-content container" id="heroContent">
+    <p class="hero-eyebrow" id="heroEyebrowText">Colonia Carlos Pellegrini · Esteros del Iberá · Corrientes</p>
+    <h1 class="hero-title" id="heroTitleText">Donde el agua <em>todavía manda</em></h1>
+    <p class="hero-sub" id="heroSubText">Un hotel de esteros pensado para perderse en la naturaleza virgen del Iberá: lancha al amanecer, safaris nocturnos, asado a leña y una posada de campo correntino que cuida el lugar tanto como a vos.</p>
+    <div class="hero-actions" id="heroActionsText">
       <a href="#paquetes" class="btn btn--primary">
         <svg aria-hidden="true"><use href="#icon-track"/></svg>
         Ver paquetes y tarifas
@@ -247,7 +247,7 @@
   <div class="container">
     <div class="split reveal-group">
       <figure class="split-media reveal">
-        <img src="images/posada/jardin-laguna.jpg" alt="Sendero entre palmeras hacia la Laguna Iberá, al atardecer">
+       <img src="images/posada/jardin-laguna.jpg" alt="Sendero entre palmeras hacia la Laguna Iberá, al atardecer">
         <figcaption>Laguna Iberá — a una cuadra del hotel</figcaption>
       </figure>
       <div class="split-text reveal">
@@ -489,25 +489,25 @@
 
   <div class="marquee" id="galleryRow1">
     <div class="marquee__track marquee__track--right">
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-1.jpg"><img src="images/galeria/foto-1.jpg" alt="Atardecer sobre la Laguna Iberá" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-2.jpg"><img src="images/galeria/foto-2.jpg" alt="Yacaré asomando en el agua" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-3.jpg"><img src="images/galeria/foto-3.jpg" alt="Carpinchos junto al embarcadero" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-4.jpg"><img src="images/galeria/foto-4.jpg" alt="Mesa servida con cocina casera correntina" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-5.jpg"><img src="images/galeria/foto-5.jpg" alt="Cabalgata por los palmares" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-6.jpg"><img src="images/galeria/foto-6.jpg" alt="Habitación de la posada" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-7.jpg"><img src="images/galeria/foto-7.jpg" alt="Piscina de Huella Iberá" loading="lazy"></button><span class="cap"></span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-1.jpg"><img src="images/galeria/foto-1.jpg" alt="Atardecer sobre la Laguna Iberá" loading="lazy"></button><span class="cap">Laguna Iberá</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-2.jpg"><img src="images/galeria/foto-2.jpg" alt="Yacaré asomando en el agua" loading="lazy"></button><span class="cap">Yacaré</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-3.jpg"><img src="images/galeria/foto-3.jpg" alt="Carpinchos junto al embarcadero" loading="lazy"></button><span class="cap">Carpinchos</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-4.jpg"><img src="images/galeria/foto-4.jpg" alt="Mesa servida con cocina casera correntina" loading="lazy"></button><span class="cap">Cocina casera</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-5.jpg"><img src="images/galeria/foto-5.jpg" alt="Cabalgata por los palmares" loading="lazy"></button><span class="cap">Cabalgata</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-6.jpg"><img src="images/galeria/foto-6.jpg" alt="Habitación de la posada" loading="lazy"></button><span class="cap">Habitaciones</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-7.jpg"><img src="images/galeria/foto-7.jpg" alt="Piscina de Huella Iberá" loading="lazy"></button><span class="cap">Piscina</span></figure>
     </div>
   </div>
 
   <div class="marquee" id="galleryRow2">
     <div class="marquee__track">
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-6.jpg"><img src="images/galeria/foto-6.jpg" alt="Habitación de la posada" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-4.jpg"><img src="images/galeria/foto-4.jpg" alt="Mesa servida con cocina casera correntina" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-7.jpg"><img src="images/galeria/foto-7.jpg" alt="Piscina de Huella Iberá" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-2.jpg"><img src="images/galeria/foto-2.jpg" alt="Yacaré asomando en el agua" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-5.jpg"><img src="images/galeria/foto-5.jpg" alt="Cabalgata por los palmares" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-1.jpg"><img src="images/galeria/foto-1.jpg" alt="Atardecer sobre la Laguna Iberá" loading="lazy"></button><span class="cap"></span></figure>
-      <figure class="g-item"><button type="button" data-full="images/galeria/foto-3.jpg"><img src="images/galeria/foto-3.jpg" alt="Carpinchos junto al embarcadero" loading="lazy"></button><span class="cap"></span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-6.jpg"><img src="images/galeria/foto-6.jpg" alt="Habitación de la posada" loading="lazy"></button><span class="cap">Habitaciones</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-4.jpg"><img src="images/galeria/foto-4.jpg" alt="Mesa servida con cocina casera correntina" loading="lazy"></button><span class="cap">Cocina casera</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-7.jpg"><img src="images/galeria/foto-7.jpg" alt="Piscina de Huella Iberá" loading="lazy"></button><span class="cap">Piscina</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-2.jpg"><img src="images/galeria/foto-2.jpg" alt="Yacaré asomando en el agua" loading="lazy"></button><span class="cap">Yacaré</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-5.jpg"><img src="images/galeria/foto-5.jpg" alt="Cabalgata por los palmares" loading="lazy"></button><span class="cap">Cabalgata</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-1.jpg"><img src="images/galeria/foto-1.jpg" alt="Atardecer sobre la Laguna Iberá" loading="lazy"></button><span class="cap">Laguna Iberá</span></figure>
+      <figure class="g-item"><button type="button" data-full="images/galeria/foto-3.jpg"><img src="images/galeria/foto-3.jpg" alt="Carpinchos junto al embarcadero" loading="lazy"></button><span class="cap">Carpinchos</span></figure>
     </div>
   </div>
 </section>

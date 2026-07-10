@@ -37,6 +37,8 @@
     <button class="dash-mtab" data-tab="actividades">🏕️ Actividades</button>
     <button class="dash-mtab" data-tab="findes">📅 Findes</button>
     <button class="dash-mtab" data-tab="medida">✏️ Medida</button>
+    <button class="dash-mtab" data-tab="galeria">🖼️ Galería</button>
+    <button class="dash-mtab" data-tab="hero">🎬 Hero</button>
     <button class="dash-mtab" data-tab="temporada">🌿 Temp.</button>
     <button class="dash-mtab" data-tab="credenciales">🔐 Acceso</button>
   </nav>
@@ -56,6 +58,12 @@
       </li>
       <li data-tab="medida">
         <span class="dash-nav-icon">✏️</span> Paquete a Medida
+      </li>
+      <li data-tab="galeria">
+        <span class="dash-nav-icon">🖼️</span> Galería
+      </li>
+      <li data-tab="hero">
+        <span class="dash-nav-icon">🎬</span> Hero (portada)
       </li>
       <li data-tab="temporada">
         <span class="dash-nav-icon">🌿</span> Temporada
@@ -187,6 +195,156 @@
 
       <h3 style="margin-top:1.5rem;">Historial de paquetes a medida</h3>
       <div id="customHistory"></div>
+    </div>
+
+    <!-- TAB: GALERÍA -->
+    <div class="tab-content" id="tabGaleria">
+      <h2>Galería</h2>
+      <p class="subtitle">Fotos que se muestran en el carrusel de la home. Subilas directo desde acá — se guardan en Cloudinary.</p>
+
+      <div class="spec-box">
+        <strong>📐 Medidas recomendadas</strong>
+        <p>Horizontal, mínimo 1200×800px (relación 3:2). Formato JPG, menos de 5MB para que cargue rápido en el celular de tus clientes.</p>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem;margin:1rem 0;">
+        <button class="btn-admin btn-admin--primary" id="addGalBtn">📷 Subir foto</button>
+        <input type="file" id="galFileInput" accept="image/*" multiple style="display:none;">
+      </div>
+      <p id="galUploadStatus" style="font-size:0.82rem;color:var(--text-soft);"></p>
+
+      <div id="galleryContainer" class="admin-gallery-grid"></div>
+    </div>
+
+    <!-- TAB: HERO -->
+    <div class="tab-content" id="tabHero">
+      <h2>Hero (portada)</h2>
+      <p class="subtitle">Es lo primero que ve el visitante al entrar a la web. Podés usar imagen o video, elegir qué texto mostrar y dónde ubicarlo.</p>
+
+      <div class="spec-box" id="heroSpecBox">
+        <strong>📐 Medidas recomendadas</strong>
+        <p id="heroSpecText">Imagen horizontal, mínimo 1920×1080px. Formato JPG, menos de 10MB. Si subís un video promocional sin texto, apagá los textos abajo para que se vea limpio.</p>
+      </div>
+
+      <div class="settings-card">
+        <h3>1. Fondo del hero</h3>
+        <div class="hero-media-type-selector" id="heroMediaTypeSelector">
+          <button type="button" class="hmt-btn active" data-mtype="image">🖼️ Imagen</button>
+          <button type="button" class="hmt-btn" data-mtype="video">🎬 Video</button>
+        </div>
+
+        <div id="heroMediaPreviewWrap" style="margin-top:1rem;">
+          <img id="heroMediaPreviewImg" style="width:100%;max-height:220px;object-fit:cover;border-radius:8px;display:none;">
+          <video id="heroMediaPreviewVideo" style="width:100%;max-height:220px;object-fit:cover;border-radius:8px;display:none;" muted loop autoplay playsinline></video>
+        </div>
+
+        <div style="display:flex;gap:0.5rem;margin-top:0.8rem;flex-wrap:wrap;">
+          <button type="button" class="btn-admin btn-admin--primary" id="heroUploadBtn">📤 Subir archivo</button>
+          <input type="file" id="heroFileInput" accept="image/*" style="display:none;">
+          <span id="heroUploadStatus" style="font-size:0.8rem;color:var(--text-soft);align-self:center;"></span>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h3>2. Textos</h3>
+        <label style="display:flex;align-items:center;gap:0.6em;font-size:0.9rem;margin-bottom:1rem;">
+          <input type="checkbox" id="heroShowText" checked> Mostrar textos sobre la imagen/video
+        </label>
+
+        <div id="heroTextFields">
+          <div class="admin-form-group">
+            <label>Texto pequeño (arriba del título)</label>
+            <input id="heroEyebrow" type="text" placeholder="Ej: Colonia Carlos Pellegrini · Esteros del Iberá">
+          </div>
+          <div class="form-row">
+            <div class="admin-form-group">
+              <label>Título</label>
+              <input id="heroTitle" type="text" placeholder="Ej: Donde el agua">
+            </div>
+            <div class="admin-form-group">
+              <label>Título — segunda línea (resaltada)</label>
+              <input id="heroTitleEm" type="text" placeholder="Ej: todavía manda">
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label>Bajada / descripción</label>
+            <textarea id="heroSubtitle" rows="3"></textarea>
+          </div>
+
+          <label style="display:flex;align-items:center;gap:0.6em;font-size:0.9rem;margin:1rem 0;">
+            <input type="checkbox" id="heroShowButtons" checked> Mostrar botones
+          </label>
+
+          <div id="heroButtonFields">
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label>Botón principal — texto</label>
+                <input id="heroBtnPrimaryLabel" type="text" placeholder="Ej: Ver paquetes y tarifas">
+              </div>
+              <div class="admin-form-group">
+                <label>Botón principal — link</label>
+                <input id="heroBtnPrimaryLink" type="text" placeholder="Ej: #paquetes">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label>Botón secundario — texto</label>
+                <input id="heroBtnSecondaryLabel" type="text" placeholder="Ej: Conocer las expediciones">
+              </div>
+              <div class="admin-form-group">
+                <label>Botón secundario — link</label>
+                <input id="heroBtnSecondaryLink" type="text" placeholder="Ej: #expediciones">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h3>3. Posición del texto</h3>
+        <p style="font-size:0.8rem;color:var(--text-soft);margin-bottom:0.8rem;">Elegí dónde aparece el bloque de texto sobre la imagen.</p>
+        <div class="hero-pos-grid" id="heroPosGrid">
+          <button type="button" class="hpos-btn" data-v="top" data-h="left">↖</button>
+          <button type="button" class="hpos-btn" data-v="top" data-h="center">↑</button>
+          <button type="button" class="hpos-btn" data-v="top" data-h="right">↗</button>
+          <button type="button" class="hpos-btn" data-v="center" data-h="left">←</button>
+          <button type="button" class="hpos-btn" data-v="center" data-h="center">•</button>
+          <button type="button" class="hpos-btn" data-v="center" data-h="right">→</button>
+          <button type="button" class="hpos-btn" data-v="bottom" data-h="left">↙</button>
+          <button type="button" class="hpos-btn" data-v="bottom" data-h="center">↓</button>
+          <button type="button" class="hpos-btn" data-v="bottom" data-h="right">↘</button>
+        </div>
+
+        <div class="admin-form-group" style="margin-top:1rem;">
+          <label>Oscurecido del fondo (para que el texto se lea bien): <span id="heroOverlayVal">55</span>%</label>
+          <input id="heroOverlay" type="range" min="0" max="90" value="55" style="width:100%;">
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h3>4. Previsualización</h3>
+        <div class="hero-preview-toggle" id="heroPreviewToggle">
+          <button type="button" class="hpt-btn active" data-device="desktop">🖥️ Web</button>
+          <button type="button" class="hpt-btn" data-device="mobile">📱 Celular</button>
+        </div>
+        <div class="hero-preview-frame" id="heroPreviewFrame">
+          <div class="hero-preview-inner" id="heroPreviewInner">
+            <div class="hpp-media" id="heroPreviewMedia"></div>
+            <div class="hpp-overlay" id="heroPreviewOverlay"></div>
+            <div class="hpp-content" id="heroPreviewContent">
+              <p class="hpp-eyebrow" id="hppEyebrow"></p>
+              <h1 class="hpp-title" id="hppTitle"></h1>
+              <p class="hpp-sub" id="hppSub"></p>
+              <div class="hpp-actions" id="hppActions"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin:1.2rem 0 2rem;">
+        <button class="btn-admin btn-admin--primary" id="saveHeroBtn">💾 Guardar cambios del hero</button>
+        <span id="heroSaveMsg" style="font-size:0.82rem;color:var(--text-soft);margin-left:0.8rem;"></span>
+      </div>
     </div>
 
     <!-- TAB: TEMPORADA -->

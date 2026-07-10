@@ -710,6 +710,153 @@ input, select, textarea, button {
   font-weight: 600;
 }
 
+/* =========================================================================
+   SPEC BOX — recuadro de medidas recomendadas
+   ========================================================================= */
+.spec-box {
+  background: rgba(98,37,34,.12);
+  border: 1px solid rgba(98,37,34,.35);
+  border-radius: 10px;
+  padding: 0.9em 1.1em;
+  margin-bottom: 0.5rem;
+}
+.spec-box strong { font-size: 0.85rem; display: block; margin-bottom: 0.3em; }
+.spec-box p { font-size: 0.8rem; color: var(--text-soft); line-height: 1.5; }
+
+/* =========================================================================
+   GALERÍA — grid de fotos
+   ========================================================================= */
+.admin-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.gal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.gal-card.is-inactive { opacity: 0.45; }
+.gal-card-img-wrap { position: relative; aspect-ratio: 4/3; background: rgba(255,255,255,.04); }
+.gal-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gal-card-body { padding: 0.7em 0.8em; display: flex; flex-direction: column; gap: 0.5em; }
+.gal-card-caption { font-size: 0.82rem; font-weight: 600; }
+.gal-card-actions { display: flex; gap: 0.4em; flex-wrap: wrap; }
+.gal-card-actions .btn-admin { flex: 1; }
+.gal-order-btns { display: flex; flex-direction: column; position: absolute; top: 6px; right: 6px; gap: 3px; }
+.gal-order-btns button {
+  width: 26px; height: 26px; border-radius: 6px; border: none;
+  background: rgba(13,6,5,.75); color: var(--text); cursor: pointer; font-size: 0.75rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.gal-order-btns button:hover { background: var(--accent); }
+
+/* =========================================================================
+   HERO EDITOR
+   ========================================================================= */
+.hero-media-type-selector, .hero-preview-toggle {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+}
+.hmt-btn, .hpt-btn {
+  padding: 0.7em 1.4em;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--text-soft);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all .2s;
+}
+.hmt-btn:hover, .hpt-btn:hover { border-color: var(--accent); color: var(--text); }
+.hmt-btn.active, .hpt-btn.active {
+  background: var(--accent); border-color: var(--accent); color: var(--text); font-weight: 600;
+}
+
+.hero-pos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  max-width: 220px;
+}
+.hpos-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--text-soft);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all .2s;
+}
+.hpos-btn:hover { border-color: var(--accent); color: var(--text); }
+.hpos-btn.active {
+  background: var(--accent); border-color: var(--accent); color: var(--text);
+}
+
+.hero-preview-frame {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  background: rgba(0,0,0,.2);
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+.hero-preview-inner {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1a0c0a;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  transition: max-width .25s ease, aspect-ratio .25s ease;
+}
+.hero-preview-frame[data-device="mobile"] .hero-preview-inner {
+  max-width: 220px;
+  aspect-ratio: 9/17.5;
+  border: 6px solid #111;
+  border-radius: 22px;
+}
+.hpp-media { position: absolute; inset: 0; }
+.hpp-media img, .hpp-media video { width: 100%; height: 100%; object-fit: cover; }
+.hpp-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.55); }
+.hpp-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: 10%;
+  z-index: 2;
+}
+.hpp-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #e8c99a;
+  margin-bottom: 0.4em;
+}
+.hpp-title { font-size: 1.1rem; font-weight: 700; line-height: 1.05; color: #fff; }
+.hero-preview-frame[data-device="mobile"] .hpp-title { font-size: 0.95rem; }
+.hpp-sub { font-size: 0.6rem; color: rgba(255,255,255,.85); margin-top: 0.5em; max-width: 34ch; line-height: 1.4; }
+.hpp-actions { display: flex; gap: 0.4em; margin-top: 0.7em; flex-wrap: wrap; }
+.hpp-actions span {
+  font-size: 0.55rem; padding: 0.5em 0.9em; border-radius: 999px;
+  background: var(--accent); color: #fff; font-weight: 600;
+}
+.hpp-actions span.hpp-btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.6); }
+
+/* posiciones del bloque de texto dentro de la preview */
+.hpp-content[data-v="top"] { justify-content: flex-start; }
+.hpp-content[data-v="center"] { justify-content: center; }
+.hpp-content[data-v="bottom"] { justify-content: flex-end; }
+.hpp-content[data-h="left"] { align-items: flex-start; text-align: left; }
+.hpp-content[data-h="center"] { align-items: center; text-align: center; }
+.hpp-content[data-h="right"] { align-items: flex-end; text-align: right; }
+
 @media (max-width: 768px) {
   .dash-sidebar { display: none !important; }
   .dashboard.is-authed { flex-direction: column; }
@@ -1082,4 +1229,11 @@ input, select, textarea, button {
   #customPkgForm > div[style*="display:flex"] .btn-admin {
     width: 100%; justify-content: center; border-radius: 10px;
   }
+
+  /* ---- Galería / Hero en mobile ---- */
+  .admin-gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.7rem; }
+  .hero-pos-grid { max-width: 180px; }
+  .hero-preview-frame { padding: 0.8rem; }
+  .hero-preview-frame[data-device="desktop"] .hero-preview-inner { max-width: 100%; }
+  .hmt-btn, .hpt-btn { flex: 1; text-align: center; padding: 0.7em 0.6em; font-size: 0.82rem; }
 }

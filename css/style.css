@@ -397,20 +397,43 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .hero-media{
   position:absolute; inset:0;
   z-index:0;
+  --hero-overlay: 0.55;
 }
-.hero-media img{
+.hero-media img, .hero-media video{
   width:100%; height:100%; object-fit:cover;
   object-position: center 60%;
 }
 .hero-media::after{
   content:"";
   position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(23,8,7,.25) 0%, rgba(23,8,7,.35) 45%, rgba(13,6,5,.92) 100%);
+  background: linear-gradient(180deg,
+    rgba(23,8,7, calc(var(--hero-overlay) * 0.45)) 0%,
+    rgba(23,8,7, calc(var(--hero-overlay) * 0.64)) 45%,
+    rgba(13,6,5, calc(var(--hero-overlay) * 1.67)) 100%);
 }
 .hero-content{
   position:relative; z-index:2;
   padding: 9rem 0 3.4rem;
+  width: 100%;
+  display:flex;
+  flex-direction:column;
 }
+/* -----------------------------------------------------------------------
+   Posición del bloque de texto — configurable desde el panel de admin
+   ----------------------------------------------------------------------- */
+.hero--v-top{ justify-content:flex-start; }
+.hero--v-center{ justify-content:center; }
+.hero--v-bottom{ justify-content:flex-end; }
+.hero--v-top .hero-content{ padding-top:9rem; padding-bottom:1.5rem; }
+.hero--v-center .hero-content{ padding-top:3rem; padding-bottom:3rem; }
+
+.hero--h-left .hero-content{ align-items:flex-start; text-align:left; }
+.hero--h-center .hero-content{ align-items:center; text-align:center; }
+.hero--h-right .hero-content{ align-items:flex-end; text-align:right; }
+.hero--h-center .hero-title, .hero--h-center .hero-sub, .hero--h-center .hero-eyebrow{ margin-inline:auto; }
+.hero--h-right .hero-actions{ justify-content:flex-end; }
+.hero--h-center .hero-actions{ justify-content:center; }
+
 .hero-eyebrow{
   font-family: var(--f-mono);
   font-size: 0.78rem;
@@ -421,15 +444,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   max-width: 30ch;
 }
 @media (max-width: 768px){
-  .hero-content{ text-align:center; display:flex; flex-direction:column; align-items:center; }
-  .hero-eyebrow{ text-align:center; }
-  .hero-title{ text-align:center; margin-inline:auto; }
-  .hero-sub{ text-align:center; margin-inline:auto; }
   .hero-actions{ justify-content:center; }
 }
 @media (max-width: 480px){
-  .hero-eyebrow{ font-size: 0.64rem; letter-spacing: .1em; max-width: 26ch; margin-inline:auto; }
+  .hero-eyebrow{ font-size: 0.64rem; letter-spacing: .1em; max-width: 26ch; }
   .hero-content{ padding: 7rem 0 2.4rem; }
+  .hero--v-top .hero-content{ padding-top:7rem; }
   .hero-title{ font-size: clamp(2.1rem, 9vw, 2.9rem); line-height: 1.1; letter-spacing: 0; }
   .hero-title em{ margin-top: 0.3em; }
   .hero-sub{ font-size: 0.92rem; margin-top: 1.1rem; line-height:1.55; }

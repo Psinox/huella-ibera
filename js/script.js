@@ -171,7 +171,7 @@
   /* -----------------------------------------------------------------------
      GALERÍA — scroll infinito (marquee de dos filas, sentidos opuestos)
      ----------------------------------------------------------------------- */
-  document.querySelectorAll(".marquee").forEach(function (marquee) {
+  function initMarquee(marquee) {
     var track = marquee.querySelector(".marquee__track");
     if (!track) return;
     var isRight = track.classList.contains("marquee__track--right");
@@ -253,7 +253,7 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
-  });
+  }
 
   /* -----------------------------------------------------------------------
      WHATSAPP
@@ -576,15 +576,115 @@
     });
   }
 
+  function galleryItemHtml(g) {
+    return '<figure class="g-item"><button type="button" data-full="' + g.url + '"><img src="' + g.url + '" alt="' + (g.alt || g.caption || "") + '" loading="lazy"></button>' +
+      (g.caption ? '<span class="cap">' + g.caption + '</span>' : "") + '</figure>';
+  }
+
+  function renderGallery() {
+    var row1 = document.getElementById("galleryRow1");
+    var row2 = document.getElementById("galleryRow2");
+    if (!row1 || !row2) return;
+
+    var items = HD.getGallery().filter(function (g) { return g.active; });
+    if (items.length === 0) return;
+
+    var track1 = row1.querySelector(".marquee__track");
+    var track2 = row2.querySelector(".marquee__track");
+    if (!track1 || !track2) return;
+
+    // fila 2: mismo set, orden invertido, para que las dos filas no luzcan idénticas
+    var reversed = items.slice().reverse();
+
+    track1.innerHTML = items.map(galleryItemHtml).join("");
+    track2.innerHTML = reversed.map(galleryItemHtml).join("");
+
+    initMarquee(row1);
+    initMarquee(row2);
+  }
+
+  /* -----------------------------------------------------------------------
+     HERO — banner principal, completamente editable desde el panel
+     ----------------------------------------------------------------------- */
+  function renderHero() {
+    var hero = HD.getHero();
+    if (!hero) return;
+
+    var mediaWrap = document.getElementById("heroMedia");
+    var content = document.getElementById("heroContent");
+    if (!mediaWrap || !content) return;
+
+    // fondo: imagen o video
+    mediaWrap.innerHTML = "";
+    if (hero.mediaType === "video" && hero.mediaUrl) {
+      var video = document.createElement("video");
+      video.src = hero.mediaUrl;
+      video.setAttribute("muted", "");
+      video.setAttribute("loop", "");
+      video.setAttribute("autoplay", "");
+      video.setAttribute("playsinline", "");
+      video.muted = true;
+      mediaWrap.appendChild(video);
+    } else if (hero.mediaUrl) {
+      var img = document.createElement("img");
+      img.src = hero.mediaUrl;
+      img.alt = hero.mediaAlt || "";
+      mediaWrap.appendChild(img);
+    }
+
+    // textos
+    content.style.display = hero.showText === false ? "none" : "";
+    document.getElementById("heroEyebrowText").textContent = hero.eyebrow || "";
+    var titleEl = document.getElementById("heroTitleText");
+    titleEl.innerHTML = (hero.title || "") + (hero.titleEm ? "<em>" + hero.titleEm + "</em>" : "");
+    document.getElementById("heroSubText").textContent = hero.subtitle || "";
+
+    // botones
+    var actionsEl = document.getElementById("heroActionsText");
+    actionsEl.innerHTML = "";
+    actionsEl.style.display = hero.showButtons === false ? "none" : "";
+    if (hero.showButtons !== false) {
+      if (hero.btnPrimaryLabel) {
+        var a1 = document.createElement("a");
+        a1.href = hero.btnPrimaryLink || "#paquetes";
+        a1.className = "btn btn--primary";
+        a1.innerHTML = '<svg aria-hidden="true"><use href="#icon-track"/></svg>' + hero.btnPrimaryLabel;
+        actionsEl.appendChild(a1);
+      }
+      if (hero.btnSecondaryLabel) {
+        var a2 = document.createElement("a");
+        a2.href = hero.btnSecondaryLink || "#expediciones";
+        a2.className = "btn btn--ghost";
+        a2.textContent = hero.btnSecondaryLabel;
+        actionsEl.appendChild(a2);
+      }
+    }
+
+    // posición del bloque de texto
+    var heroSection = document.getElementById("inicio");
+    heroSection.classList.remove(
+      "hero--v-top", "hero--v-center", "hero--v-bottom",
+      "hero--h-left", "hero--h-center", "hero--h-right"
+    );
+    heroSection.classList.add("hero--v-" + (hero.posV || "bottom"));
+    heroSection.classList.add("hero--h-" + (hero.posH || "left"));
+
+    // oscurecido de fondo
+    var overlay = hero.overlay != null ? hero.overlay : 55;
+    mediaWrap.style.setProperty("--hero-overlay", (overlay / 100).toFixed(2));
+  }
+
   /* ===================================================================
      INIT
      =================================================================== */
   HD.ready.then(function () {
+    renderHero();
     renderSeasonBanner();
     renderPackages();
     renderActivities();
     renderContactFormPkgs();
     renderBooks();
+    renderGallery();
     renderFindesLargos();
     renderCustomPackage();
   });
