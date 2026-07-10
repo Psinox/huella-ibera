@@ -134,22 +134,23 @@
   if (nextBtn) nextBtn.addEventListener("click", function () { scrollByCard(1); });
 
   /* -----------------------------------------------------------------------
-     GALERÍA — lightbox
+     GALERÍA — lightbox (delegación de eventos: sigue funcionando aunque
+     el marquee duplique las imágenes para el loop infinito)
      ----------------------------------------------------------------------- */
   var lightbox = document.getElementById("lightbox");
   var lightboxImg = document.getElementById("lightboxImg");
   var lightboxClose = document.getElementById("lightboxClose");
 
-  document.querySelectorAll("#galleryGrid button[data-full]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var full = btn.getAttribute("data-full");
-      var altText = btn.querySelector("img") ? btn.querySelector("img").alt : "";
-      if (!lightbox || !lightboxImg) return;
-      lightboxImg.src = full;
-      lightboxImg.alt = altText;
-      lightbox.classList.add("is-open");
-      document.body.style.overflow = "hidden";
-    });
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".gallery-infinite button[data-full]") : null;
+    if (!btn) return;
+    var full = btn.getAttribute("data-full");
+    var img = btn.querySelector("img");
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = full;
+    lightboxImg.alt = img ? img.alt : "";
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
   });
 
   function closeLightbox() {
@@ -165,6 +166,93 @@
   }
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closeLightbox();
+  });
+
+  /* -----------------------------------------------------------------------
+     GALERÍA — scroll infinito (marquee de dos filas, sentidos opuestos)
+     ----------------------------------------------------------------------- */
+  document.querySelectorAll(".marquee").forEach(function (marquee) {
+    var track = marquee.querySelector(".marquee__track");
+    if (!track) return;
+    var isRight = track.classList.contains("marquee__track--right");
+
+    if (prefersReducedMotion) return; // deja el scroll horizontal nativo, sin animación
+
+    // duplica el contenido una vez para que el loop sea perfecto (seamless)
+    track.innerHTML += track.innerHTML;
+    track.querySelectorAll("img").forEach(function (img) {
+      img.setAttribute("draggable", "false"); // evita el "fantasma" de arrastre nativo del navegador
+    });
+
+    var speed = 0.5; // px por frame — automático, siempre corriendo
+    var half = track.scrollWidth / 2;
+    var pos = isRight ? -half : 0;
+    var paused = false;
+    var dragging = false;
+    var dragStartX = 0;
+    var dragStartPos = 0;
+    var dragMoved = 0;
+    var activePointerId = null;
+
+    marquee.addEventListener("mouseenter", function () { paused = true; });
+    marquee.addEventListener("mouseleave", function () { paused = false; });
+
+    // arrastre con el puntero — funciona igual con mouse (PC) y con el dedo (mobile)
+    marquee.addEventListener("pointerdown", function (e) {
+      dragging = true;
+      paused = true;
+      dragMoved = 0;
+      dragStartX = e.clientX;
+      dragStartPos = pos;
+      activePointerId = e.pointerId;
+      marquee.classList.add("is-dragging");
+      try { marquee.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    marquee.addEventListener("pointermove", function (e) {
+      if (!dragging || e.pointerId !== activePointerId) return;
+      var delta = e.clientX - dragStartX;
+      dragMoved = Math.max(dragMoved, Math.abs(delta));
+      pos = dragStartPos + delta;
+      e.preventDefault();
+    }, { passive: false });
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      paused = false;
+      activePointerId = null;
+      marquee.classList.remove("is-dragging");
+    }
+    marquee.addEventListener("pointerup", endDrag);
+    marquee.addEventListener("pointercancel", endDrag);
+    marquee.addEventListener("pointerleave", endDrag);
+
+    // si hubo arrastre real, cancela el click para que no abra el lightbox sin querer
+    marquee.addEventListener("click", function (e) {
+      if (dragMoved > 6) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    }, true);
+
+    function tick() {
+      half = track.scrollWidth / 2; // por si las imágenes lazy cambian el ancho
+      if (!paused) {
+        if (isRight) {
+          pos += speed;
+          if (pos >= 0) pos -= half;
+        } else {
+          pos -= speed;
+          if (pos <= -half) pos += half;
+        }
+      } else if (dragging) {
+        // mantiene el valor arrastrado dentro del rango del loop
+        if (pos >= 0) pos -= half;
+        if (pos <= -half) pos += half;
+      }
+      track.style.transform = "translateX(" + pos + "px)";
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
   });
 
   /* -----------------------------------------------------------------------
