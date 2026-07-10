@@ -1046,24 +1046,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .gallery-grid .g-item .cap{ opacity: 1; font-size: 0.68rem; }
 }
 
-/* =========================================================================
-   INSTAGRAM
-   ========================================================================= */
-.ig-embed{
-  max-width: 900px;
-  margin: 2.4rem auto 0;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--paper-deep);
-}
-.ig-embed iframe{ display:block; width:100%; min-height: 420px; }
-.ig-cta{ text-align:center; margin-top: 2rem; }
-.ig-cta .btn svg{ width:18px; height:18px; }
-@media (max-width: 480px){
-  .ig-embed{ margin-top: 1.8rem; }
-  .ig-embed iframe{ min-height: 520px; }
-}
-
 .lightbox{
   position:fixed; inset:0; z-index:200;
   background: rgba(13,6,5,.96);
