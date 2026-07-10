@@ -535,7 +535,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* =========================================================================
    SECCIONES — espaciado base
    ========================================================================= */
-.section{ padding: clamp(3.5rem, 8vw, 7.5rem) 0; position:relative; }
+.section{ padding: clamp(3rem, 6vw, 5.5rem) 0; position:relative; }
+/* Cuando dos secciones seguidas comparten el mismo fondo, achicamos aún más
+   el espacio entre ellas para que no se sienta un salto vacío */
+.section.on-paper-deep + .section.on-paper-deep{ padding-top: clamp(1.5rem, 3vw, 2.5rem); }
 .section.on-dark{
   background: linear-gradient(180deg, #2A1512 0%, #0D0605 100%);
   color: var(--paper);
@@ -552,6 +555,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .section.on-dark > .container{ position:relative; z-index:1; }
 .section.on-paper-deep{ background: var(--paper-deep); }
+.section.on-paper-deep::before{
+  content:"";
+  position:absolute; top:0; left:0; right:0; height:clamp(2.5rem, 6vw, 5rem);
+  background: linear-gradient(to bottom, var(--paper), transparent);
+  pointer-events:none;
+}
+.section.on-paper-deep::after{
+  content:"";
+  position:absolute; bottom:0; left:0; right:0; height:clamp(2.5rem, 6vw, 5rem);
+  background: linear-gradient(to top, var(--paper), transparent);
+  pointer-events:none;
+}
+/* Si la siguiente sección también es paper-deep, no hace falta difuminar
+   el borde entre ellas porque ya comparten color */
+.section.on-paper-deep + .section.on-paper-deep::before{ display:none; }
+.section.on-paper-deep:has(+ .section.on-paper-deep)::after{ display:none; }
+.section.on-paper-deep:has(+ .section.on-dark)::after{
+  background: linear-gradient(to top, #2A1512, transparent);
+}
 .section-head{ max-width: 46em; }
 .section-head.center{ margin-inline:auto; text-align:center; }
 .section-head.center .eyebrow{ justify-content:center; }
