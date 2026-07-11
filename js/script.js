@@ -489,6 +489,7 @@
     var container = document.getElementById("booksContainer");
     if (!container) return;
     var books = HD.getBooks();
+    container.innerHTML = "";
     if (books.length === 0) return;
     var html = "";
     books.forEach(function (b) {
